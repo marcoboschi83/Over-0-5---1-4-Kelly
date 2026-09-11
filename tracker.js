@@ -34,23 +34,42 @@ async function loadMatches(){
 }
 
 function registerResult(match, result){
+  const alreadyRegistered = state.history.some(h => String(h.id) === String(match.id));
+  if(alreadyRegistered) return;
+
   const stake = calcStake(match);
   let pl = 0;
   if(result === 'WIN') pl = netProfit(stake, match);
   if(result === 'LOSS') pl = -stake;
+
   const before = state.bankroll;
   state.bankroll = +(state.bankroll + pl).toFixed(2);
+
   state.history.unshift({
     ts: new Date().toISOString(), id: match.id, match: match.match, class: match.class,
     stake_pct: match.stake_pct, stake, result, pl, bankroll_before: before, bankroll_after: state.bankroll
   });
+
   saveState();
 }
 
 function renderMatches(){
   const root = $('matchesList');
-  if(!matches.length){ root.innerHTML = '<div class="empty">Nessuna partita presente in matches.json.</div>'; return; }
-  root.innerHTML = matches.map(m => {
+
+  if(!matches.length){
+    root.innerHTML = '<div class="empty">Nessuna partita presente in matches.json.</div>';
+    return;
+  }
+
+  const registeredIds = new Set(state.history.map(h => String(h.id)));
+  const availableMatches = matches.filter(m => !registeredIds.has(String(m.id)));
+
+  if(!availableMatches.length){
+    root.innerHTML = '<div class="empty">Tutti gli eventi sono stati registrati.</div>';
+    return;
+  }
+
+  root.innerHTML = availableMatches.map(m => {
     const stake = calcStake(m);
     const cls = String(m.class || 'C').toLowerCase().replace('+','p');
     const disabled = Number(m.stake_pct || 0) <= 0;
@@ -87,7 +106,10 @@ window.registerById = function(id,result){
 
 function renderHistory(){
   const body = $('historyBody');
-  if(!state.history.length){ body.innerHTML = '<tr><td colspan="7" class="empty">Nessun trade registrato.</td></tr>'; return; }
+  if(!state.history.length){
+    body.innerHTML = '<tr><td colspan="7" class="empty">Nessun trade registrato.</td></tr>';
+    return;
+  }
   body.innerHTML = state.history.map(h => `<tr>
     <td>${new Date(h.ts).toLocaleString('it-IT')}</td>
     <td>${h.match}</td><td>${h.class}</td><td>${euro(h.stake)}</td><td>${h.result}</td>
@@ -103,6 +125,7 @@ function renderStats(){
   const total = state.history.length;
   const profit = state.bankroll - state.initialBankroll;
   const totalStaked = state.history.filter(h=>h.result!=='NULLA').reduce((s,h)=>s+Number(h.stake||0),0);
+
   $('bankrollValue').textContent = euro(state.bankroll);
   $('profitValue').textContent = `${profit>=0?'+':''}${euro(profit)}`;
   $('winRateValue').textContent = settled ? pct(wins/settled*100) : '—';
@@ -110,7 +133,12 @@ function renderStats(){
   $('roiValue').textContent = totalStaked ? pct(profit/totalStaked*100) : '—';
   $('initialBankroll').value = state.initialBankroll;
 }
-function render(){ renderStats(); renderHistory(); renderMatches(); }
+
+function render(){
+  renderStats();
+  renderHistory();
+  renderMatches();
+}
 
 $('saveBankrollBtn').addEventListener('click',()=>{
   const v = Math.round(Number($('initialBankroll').value));
@@ -121,26 +149,47 @@ $('saveBankrollBtn').addEventListener('click',()=>{
   state.bankroll = +(state.bankroll + delta).toFixed(2);
   saveState();
 });
+
 $('undoBtn').addEventListener('click',()=>{
   if(!state.history.length) return;
+
+  // Ogni pressione elimina l'ultima registrazione disponibile nello storico.
+  // Premendo di nuovo elimina la penultima, poi la terzultima, e così via.
+  // La partita eliminata dallo storico ricompare automaticamente nella lista.
   const last = state.history.shift();
   state.bankroll = Number(last.bankroll_before);
   saveState();
 });
+
 $('resetBtn').addEventListener('click',()=>{
   if(confirm('Azzera tutto lo storico e riparti dalla cassa iniziale?')){
-    state.bankroll = state.initialBankroll; state.history=[]; saveState();
+    state.bankroll = state.initialBankroll;
+    state.history = [];
+    saveState();
   }
 });
+
 $('reloadBtn').addEventListener('click',loadMatches);
+
 $('exportBtn').addEventListener('click',()=>{
   const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='over05_tracker_backup.json'; a.click(); URL.revokeObjectURL(a.href);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'over05_tracker_backup.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
 });
+
 $('importInput').addEventListener('change',async(e)=>{
-  const file=e.target.files[0]; if(!file) return;
-  try{ const imported=JSON.parse(await file.text()); state={...DEFAULT_STATE,...imported}; saveState(); }
-  catch{ alert('Backup non valido.'); }
+  const file=e.target.files[0];
+  if(!file) return;
+  try{
+    const imported=JSON.parse(await file.text());
+    state={...DEFAULT_STATE,...imported};
+    saveState();
+  }catch{
+    alert('Backup non valido.');
+  }
   e.target.value='';
 });
 
