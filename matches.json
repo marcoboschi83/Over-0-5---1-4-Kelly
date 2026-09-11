@@ -7,7 +7,7 @@
       "step1_pct": 93.5,
       "step3_status": "WATCH",
       "class": "B",
-      "stake_pct": 10,
+      "stake_pct": 15,
       "net_win_pct": 10,
       "note": "Tradability alta, alert disponibilita'"
     },
@@ -18,7 +18,7 @@
       "step1_pct": 94.5,
       "step3_status": "PASS",
       "class": "A+",
-      "stake_pct": 20,
+      "stake_pct": 25,
       "net_win_pct": 10,
       "note": "Ingresso favorevole; controllo assenze chiave"
     },
@@ -29,7 +29,7 @@
       "step1_pct": 96.2,
       "step3_status": "PASS / controllo",
       "class": "B",
-      "stake_pct": 10,
+      "stake_pct": 15,
       "net_win_pct": 10,
       "note": "Quota iniziale molto bassa; rischio NULLA piu' alto"
     },
@@ -51,7 +51,7 @@
       "step1_pct": 95.6,
       "step3_status": "PASS / controllo",
       "class": "A+",
-      "stake_pct": 20,
+      "stake_pct": 25,
       "net_win_pct": 10,
       "note": "Buon equilibrio qualita' / finestra di ingresso"
     },
@@ -62,7 +62,7 @@
       "step1_pct": 96.0,
       "step3_status": "PASS / turnover",
       "class": "A",
-      "stake_pct": 15,
+      "stake_pct": 20,
       "net_win_pct": 10,
       "note": "Buona tradability; turnover da confermare"
     }
