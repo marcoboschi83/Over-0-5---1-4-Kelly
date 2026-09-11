@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Over 0.5 Trade Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Over 0.5 Trade Tracker</h1>
+      <p>REV 04 — Classificazione A+/A/B/C e stake automatico</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card stats-grid">
+      <div class="stat"><span>Cassa attuale</span><strong id="bankrollValue">€ 100</strong></div>
+      <div class="stat"><span>Profitto totale</span><strong id="profitValue">€ 0</strong></div>
+      <div class="stat"><span>Win Rate</span><strong id="winRateValue">—</strong></div>
+      <div class="stat"><span>Null Rate</span><strong id="nullRateValue">—</strong></div>
+      <div class="stat"><span>ROI</span><strong id="roiValue">—</strong></div>
+    </section>
+
+    <section class="card controls">
+      <div class="field">
+        <label for="initialBankroll">Cassa iniziale (€)</label>
+        <input id="initialBankroll" type="number" min="1" step="1" />
+      </div>
+      <button id="saveBankrollBtn" class="secondary">Aggiorna cassa iniziale</button>
+      <button id="exportBtn" class="secondary">Esporta backup</button>
+      <label class="secondary file-btn">Importa backup<input id="importInput" type="file" accept="application/json" hidden /></label>
+      <button id="resetBtn" class="danger">Azzera storico</button>
+    </section>
+
+    <section class="card">
+      <div class="section-title-row">
+        <div>
+          <h2>Partite qualificate</h2>
+          <p>Lo stake è calcolato automaticamente sulla cassa corrente e arrotondato all'euro.</p>
+        </div>
+        <button id="reloadBtn" class="secondary">Ricarica matches.json</button>
+      </div>
+      <div id="matchesList" class="matches-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Storico trade</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th><th>Partita</th><th>Classe</th><th>Stake</th><th>Esito</th><th>P/L</th><th>Cassa</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+      <div class="history-actions">
+        <button id="undoBtn" class="secondary">Cancella ultima registrazione</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="tracker.js"></script>
+</body>
+</html>

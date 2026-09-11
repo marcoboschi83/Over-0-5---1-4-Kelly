@@ -1,0 +1,70 @@
+{
+  "matches": [
+    {
+      "id": "2026-09-12-racing-alaves",
+      "match": "Racing Santander - Alaves",
+      "datetime": "12/09/2026 14:00",
+      "step1_pct": 93.5,
+      "step3_status": "WATCH",
+      "class": "B",
+      "stake_pct": 10,
+      "net_win_pct": 10,
+      "note": "Tradability alta, alert disponibilita'"
+    },
+    {
+      "id": "2026-09-12-athletic-elche",
+      "match": "Athletic - Elche",
+      "datetime": "12/09/2026 18:30",
+      "step1_pct": 94.5,
+      "step3_status": "PASS",
+      "class": "A+",
+      "stake_pct": 20,
+      "net_win_pct": 10,
+      "note": "Ingresso favorevole; controllo assenze chiave"
+    },
+    {
+      "id": "2026-09-12-real-rayo",
+      "match": "Real Madrid - Rayo",
+      "datetime": "12/09/2026 21:00",
+      "step1_pct": 96.2,
+      "step3_status": "PASS / controllo",
+      "class": "B",
+      "stake_pct": 10,
+      "net_win_pct": 10,
+      "note": "Quota iniziale molto bassa; rischio NULLA piu' alto"
+    },
+    {
+      "id": "2026-09-13-levante-barcelona",
+      "match": "Levante - Barcelona",
+      "datetime": "13/09/2026 16:15",
+      "step1_pct": 97.8,
+      "step3_status": "PASS / controllo",
+      "class": "C",
+      "stake_pct": 0,
+      "net_win_pct": 10,
+      "note": "Ingresso potenzialmente tardivo; NO TRADE"
+    },
+    {
+      "id": "2026-09-13-sociedad-atletico",
+      "match": "Real Sociedad - Atletico",
+      "datetime": "13/09/2026 21:00",
+      "step1_pct": 95.6,
+      "step3_status": "PASS / controllo",
+      "class": "A+",
+      "stake_pct": 20,
+      "net_win_pct": 10,
+      "note": "Buon equilibrio qualita' / finestra di ingresso"
+    },
+    {
+      "id": "2026-09-14-villarreal-betis",
+      "match": "Villarreal - Betis",
+      "datetime": "14/09/2026 21:00",
+      "step1_pct": 96.0,
+      "step3_status": "PASS / turnover",
+      "class": "A",
+      "stake_pct": 15,
+      "net_win_pct": 10,
+      "note": "Buona tradability; turnover da confermare"
+    }
+  ]
+}
