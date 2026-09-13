@@ -60,6 +60,17 @@ function formatMatched(steps){
   return steps.map(x => `${Number(x.q).toFixed(2).replace('.',',')} (${euro(x.stake)})`).join(' · ');
 }
 
+function updateMatchPreview(id){
+  const x = matchedFromUI(id);
+  const el = $(`preview-${id}`);
+  if(!el) return;
+  if(!x.steps.length){
+    el.textContent = 'Nessun ordine abbinato selezionato.';
+    return;
+  }
+  el.innerHTML = `Abbinati: <strong>${formatMatched(x.steps)}</strong> · Totale effettivamente abbinato: <strong>${euro(x.stake)}</strong>`;
+}
+
 async function loadMatches(){
   try{
     const res = await fetch(`matches.json?ts=${Date.now()}`);
@@ -158,25 +169,39 @@ function renderMatches(){
         <div class="stake-value">${disabled ? 'NO TRADE' : euro(stake)}</div>
 
         ${disabled ? '' : `
-        <div style="margin-top:10px;font-size:13px"><strong>Ordini da impostare</strong></div>
+        <div style="margin-top:10px;padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb">
+          <div style="font-size:13px;color:#6b7280">Totale trade da predisporre</div>
+          <div style="font-size:24px;font-weight:800;margin-top:2px">${euro(ladder.total)}</div>
+        </div>
+
+        <div style="margin-top:10px;font-size:13px"><strong>Budget singoli da inserire</strong></div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px">
-          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,07</strong></div>
-            <div>${euro(ladder.q107)}</div>
-            <input type="checkbox" id="m107-${esc(m.id)}" style="margin-top:5px">
+            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q107)}</div>
+            <div style="font-size:11px;color:#6b7280">Abbinato?</div>
+            <input type="checkbox" id="m107-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>
-          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,11</strong></div>
-            <div>${euro(ladder.q111)}</div>
-            <input type="checkbox" id="m111-${esc(m.id)}" style="margin-top:5px">
+            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q111)}</div>
+            <div style="font-size:11px;color:#6b7280">Abbinato?</div>
+            <input type="checkbox" id="m111-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>
-          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,22</strong></div>
-            <div>${euro(ladder.q122)}</div>
-            <input type="checkbox" id="m122-${esc(m.id)}" style="margin-top:5px">
+            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q122)}</div>
+            <div style="font-size:11px;color:#6b7280">Abbinato?</div>
+            <input type="checkbox" id="m122-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>
         </div>
-        <div class="stake-label" style="margin-top:6px">Esposizione max: ${euro(ladder.total)}</div>
+
+        <div id="preview-${esc(m.id)}" class="stake-label" style="margin-top:7px">
+          Seleziona gli ordini realmente abbinati prima di registrare WIN o LOSS.
+        </div>
         `}
 
         <div class="result-buttons">
@@ -188,6 +213,8 @@ function renderMatches(){
     </div>`;
   }).join('');
 }
+
+window.updateMatchPreview = updateMatchPreview;
 
 window.registerById = function(id,result){
   const m = matches.find(x => String(x.id) === String(id));
