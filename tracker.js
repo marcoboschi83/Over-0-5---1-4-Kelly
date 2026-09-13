@@ -22,21 +22,22 @@ function calcStake(match){
 
 /*
   REV04 ladder:
-  - stake base = % classe sulla cassa corrente
-  - 1,07 / 1,11 dividono lo stake base in rapporto 17/8
-  - 1,22 aggiunge €5 oltre allo stake base
+  - totale trade = stake classe originale + €5
+  - i €5 aggiuntivi sono inclusi nel totale e vanno sulla quota 1,22
+  - il resto (stake classe) viene diviso tra 1,07 e 1,11 in rapporto 17/8
   Esempio su cassa €100:
-  A+ 25% -> 17 / 8 / 5 = €30 max
-  A  20% -> 14 / 6 / 5 = €25 max
-  B  15% -> 10 / 5 / 5 = €20 max
+  A+ 25 + 5 = €30 -> 17 / 8 / 5
+  A  20 + 5 = €25 -> 14 / 6 / 5
+  B  15 + 5 = €20 -> 10 / 5 / 5 circa (arrotondamento coerente col totale)
 */
 function ladderFor(match){
   const base = calcStake(match);
   if(base <= 0) return {base:0, q107:0, q111:0, q122:0, total:0};
+  const total = base + 5;
+  const q122 = 5;
   const q107 = Math.round(base * 17 / 25);
   const q111 = base - q107;
-  const q122 = 5;
-  return {base, q107, q111, q122, total: base + q122};
+  return {base, q107, q111, q122, total};
 }
 
 function matchedFromUI(id){
@@ -160,7 +161,7 @@ function renderMatches(){
         <div class="meta">
           ${m.datetime ? `<span>${esc(m.datetime)}</span>` : ''}
           ${m.step3_status ? `<span>Step 3: ${esc(m.step3_status)}</span>` : ''}
-          ${m.note ? `<span>${esc(m.note)}</span>` : ''}
+          ${m.note ? `<span><strong>Nota:</strong> ${esc(m.note)}</span>` : ''}
         </div>
       </div>
 
@@ -171,29 +172,29 @@ function renderMatches(){
         ${disabled ? '' : `
         <div style="margin-top:10px;padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb">
           <div style="font-size:13px;color:#6b7280">Totale trade da predisporre</div>
-          <div style="font-size:24px;font-weight:800;margin-top:2px">${euro(ladder.total)}</div>
+          <div style="font-size:24px;font-weight:800;margin-top:2px">${euro(ladder.total)}</div><div style="font-size:11px;color:#6b7280;margin-top:2px">Somma 3 ingressi: ${euro(ladder.q107+ladder.q111+ladder.q122)}</div>
         </div>
 
         <div style="margin-top:10px;font-size:13px"><strong>Budget singoli da inserire</strong></div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px">
+        <div class="trade-ladder-grid" style="margin-top:6px">
           <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
             <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,07</strong></div>
-            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q107)}</div>
+            <div class="budget" style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q107)}</div>
             <div style="font-size:11px;color:#6b7280">Abbinato?</div>
             <input type="checkbox" id="m107-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>
           <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
             <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,11</strong></div>
-            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q111)}</div>
+            <div class="budget" style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q111)}</div>
             <div style="font-size:11px;color:#6b7280">Abbinato?</div>
             <input type="checkbox" id="m111-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>
           <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
             <div style="font-size:12px;color:#6b7280">Quota</div>
             <div><strong>1,22</strong></div>
-            <div style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q122)}</div>
+            <div class="budget" style="font-size:18px;font-weight:800;margin:3px 0">${euro(ladder.q122)}</div>
             <div style="font-size:11px;color:#6b7280">Abbinato?</div>
             <input type="checkbox" id="m122-${esc(m.id)}" style="margin-top:4px" onchange="updateMatchPreview('${esc(m.id)}')">
           </label>

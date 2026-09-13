@@ -5,6 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Over 0.5 Trade Tracker</title>
   <link rel="stylesheet" href="style.css" />
+
+<style>
+  html,body{max-width:100%;overflow-x:hidden}
+  .container{width:100%;max-width:100%;padding-left:10px;padding-right:10px}
+  .card{max-width:100%;overflow:hidden}
+  .matches-list,.match,.stake-box{max-width:100%;min-width:0}
+  .match{display:block!important}
+  .stake-box{width:100%;margin-top:10px}
+  .trade-ladder-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;width:100%}
+  .trade-ladder-grid label{min-width:0!important;padding:6px 3px!important}
+  .trade-ladder-grid .budget{font-size:16px!important;word-break:break-word}
+  .table-wrap{overflow-x:visible!important}
+  table{table-layout:fixed;width:100%;font-size:11px}
+  th,td{white-space:normal!important;word-break:break-word;padding:6px 3px!important}
+  th:nth-child(1),td:nth-child(1){width:13%}
+  th:nth-child(2),td:nth-child(2){width:19%}
+  th:nth-child(3),td:nth-child(3){width:8%}
+  th:nth-child(4),td:nth-child(4){width:10%}
+  th:nth-child(5),td:nth-child(5){width:19%}
+  th:nth-child(6),td:nth-child(6){width:9%}
+  th:nth-child(7),td:nth-child(7){width:10%}
+  th:nth-child(8),td:nth-child(8){width:12%}
+  @media(max-width:560px){
+    .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    .controls{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px}
+    .controls .field{grid-column:1/-1}
+    .section-title-row{display:block!important}
+    .section-title-row button{margin-top:8px;width:100%}
+    .result-buttons{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+    table{font-size:10px}
+  }
+</style>
+
 </head>
 <body>
   <header class="app-header">
@@ -38,7 +71,7 @@
       <div class="section-title-row">
         <div>
           <h2>Partite qualificate</h2>
-          <p>Per ogni trade il tracker mostra il TOTALE da predisporre e, separatamente, i 3 budget da inserire alle quote 1,07 / 1,11 / 1,22. Al momento della registrazione selezioni quali ordini sono stati realmente abbinati.</p>
+          <p>Per ogni trade il tracker mostra il totale corretto (stake classe + €5) e i 3 budget che lo compongono alle quote 1,07 / 1,11 / 1,22. La somma dei 3 budget coincide sempre con il totale. Al momento della registrazione selezioni quali ordini sono stati realmente abbinati.</p>
         </div>
         <button id="reloadBtn" class="secondary">Ricarica matches.json</button>
       </div>
