@@ -1,5 +1,6 @@
 const STORAGE_KEY = 'over05_tracker_v1';
 const DEFAULT_STATE = { initialBankroll: 100, bankroll: 100, history: [] };
+const COMMISSION = 0.045;
 let matches = [];
 let state = loadState();
 
@@ -10,15 +11,53 @@ function loadState(){
   catch { return {...DEFAULT_STATE}; }
 }
 function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); render(); }
-function euro(v){ return new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(v); }
+function euro(v){ return new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(Number(v||0)); }
 function pct(v){ return `${v.toFixed(1).replace('.',',')}%`; }
+function esc(v){ return String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])); }
+
 function calcStake(match){
   const p = Number(match.stake_pct || 0);
   return Math.max(0, Math.round(state.bankroll * p / 100));
 }
-function netProfit(stake, match){
-  const net = Number(match.net_win_pct ?? 10);
-  return +(stake * net / 100).toFixed(2);
+
+/*
+  REV04 ladder:
+  - stake base = % classe sulla cassa corrente
+  - 1,07 / 1,11 dividono lo stake base in rapporto 17/8
+  - 1,22 aggiunge €5 oltre allo stake base
+  Esempio su cassa €100:
+  A+ 25% -> 17 / 8 / 5 = €30 max
+  A  20% -> 14 / 6 / 5 = €25 max
+  B  15% -> 10 / 5 / 5 = €20 max
+*/
+function ladderFor(match){
+  const base = calcStake(match);
+  if(base <= 0) return {base:0, q107:0, q111:0, q122:0, total:0};
+  const q107 = Math.round(base * 17 / 25);
+  const q111 = base - q107;
+  const q122 = 5;
+  return {base, q107, q111, q122, total: base + q122};
+}
+
+function matchedFromUI(id){
+  const m = matches.find(x => String(x.id) === String(id));
+  if(!m) return {steps:[], stake:0, grossProfit:0, netProfit:0};
+  const l = ladderFor(m);
+  const defs = [
+    {q:1.07, stake:l.q107, el:`m107-${id}`},
+    {q:1.11, stake:l.q111, el:`m111-${id}`},
+    {q:1.22, stake:l.q122, el:`m122-${id}`}
+  ];
+  const steps = defs.filter(x => $(x.el)?.checked && x.stake > 0);
+  const stake = steps.reduce((s,x)=>s+x.stake,0);
+  const grossProfit = steps.reduce((s,x)=>s + x.stake*(x.q-1),0);
+  const netProfit = +(grossProfit * (1-COMMISSION)).toFixed(2);
+  return {steps, stake, grossProfit, netProfit};
+}
+
+function formatMatched(steps){
+  if(!Array.isArray(steps) || !steps.length) return '—';
+  return steps.map(x => `${Number(x.q).toFixed(2).replace('.',',')} (${euro(x.stake)})`).join(' · ');
 }
 
 async function loadMatches(){
@@ -29,7 +68,7 @@ async function loadMatches(){
     matches = Array.isArray(data) ? data : data.matches || [];
     renderMatches();
   }catch(err){
-    $('matchesList').innerHTML = `<div class="empty">Errore caricamento matches.json: ${err.message}</div>`;
+    $('matchesList').innerHTML = `<div class="empty">Errore caricamento matches.json: ${esc(err.message)}</div>`;
   }
 }
 
@@ -37,17 +76,42 @@ function registerResult(match, result){
   const alreadyRegistered = state.history.some(h => String(h.id) === String(match.id));
   if(alreadyRegistered) return;
 
-  const stake = calcStake(match);
+  const matched = matchedFromUI(match.id);
+
+  if(result === 'WIN' && !matched.steps.length){
+    alert('Per registrare WIN seleziona almeno uno stake abbinato.');
+    return;
+  }
+  if(result === 'LOSS' && !matched.steps.length){
+    alert('Per registrare LOSS seleziona almeno uno stake abbinato.');
+    return;
+  }
+  if(result === 'NULLA' && matched.steps.length){
+    if(!confirm('Hai selezionato uno o più stake abbinati ma stai registrando NULLA. Continuare?')) return;
+  }
+
   let pl = 0;
-  if(result === 'WIN') pl = netProfit(stake, match);
-  if(result === 'LOSS') pl = -stake;
+  if(result === 'WIN') pl = matched.netProfit;
+  if(result === 'LOSS') pl = -matched.stake;
 
   const before = state.bankroll;
   state.bankroll = +(state.bankroll + pl).toFixed(2);
 
   state.history.unshift({
-    ts: new Date().toISOString(), id: match.id, match: match.match, class: match.class,
-    stake_pct: match.stake_pct, stake, result, pl, bankroll_before: before, bankroll_after: state.bankroll
+    ts: new Date().toISOString(),
+    id: match.id,
+    match: match.match,
+    class: match.class,
+    stake_pct: match.stake_pct,
+    stake: matched.stake,
+    guide_stake: calcStake(match),
+    result,
+    matchedSteps: matched.steps.map(x=>({q:x.q, stake:x.stake})),
+    pl,
+    bankroll_before: before,
+    bankroll_after: state.bankroll,
+    ladder_version: 'REV04-1.07-1.11-1.22',
+    commission: COMMISSION
   });
 
   saveState();
@@ -71,28 +135,54 @@ function renderMatches(){
 
   root.innerHTML = availableMatches.map(m => {
     const stake = calcStake(m);
+    const ladder = ladderFor(m);
     const cls = String(m.class || 'C').toLowerCase().replace('+','p');
     const disabled = Number(m.stake_pct || 0) <= 0;
+
     return `<div class="match">
       <div>
         <div class="match-top">
-          <span class="match-title">${m.match}</span>
-          <span class="badge class-${cls}">${m.class}</span>
+          <span class="match-title">${esc(m.match)}</span>
+          <span class="badge class-${cls}">${esc(m.class)}</span>
           ${m.step1_pct != null ? `<span class="badge">Step 1 ${String(m.step1_pct).replace('.',',')}%</span>` : ''}
         </div>
         <div class="meta">
-          ${m.datetime ? `<span>${m.datetime}</span>` : ''}
-          ${m.step3_status ? `<span>Step 3: ${m.step3_status}</span>` : ''}
-          ${m.note ? `<span>${m.note}</span>` : ''}
+          ${m.datetime ? `<span>${esc(m.datetime)}</span>` : ''}
+          ${m.step3_status ? `<span>Step 3: ${esc(m.step3_status)}</span>` : ''}
+          ${m.note ? `<span>${esc(m.note)}</span>` : ''}
         </div>
       </div>
+
       <div class="stake-box">
-        <div class="stake-label">Stake guida (${m.stake_pct || 0}%)</div>
+        <div class="stake-label">Stake base classe (${m.stake_pct || 0}%)</div>
         <div class="stake-value">${disabled ? 'NO TRADE' : euro(stake)}</div>
+
+        ${disabled ? '' : `
+        <div style="margin-top:10px;font-size:13px"><strong>Ordini da impostare</strong></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px">
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+            <div><strong>1,07</strong></div>
+            <div>${euro(ladder.q107)}</div>
+            <input type="checkbox" id="m107-${esc(m.id)}" style="margin-top:5px">
+          </label>
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+            <div><strong>1,11</strong></div>
+            <div>${euro(ladder.q111)}</div>
+            <input type="checkbox" id="m111-${esc(m.id)}" style="margin-top:5px">
+          </label>
+          <label style="border:1px solid #d1d5db;border-radius:8px;padding:7px;text-align:center">
+            <div><strong>1,22</strong></div>
+            <div>${euro(ladder.q122)}</div>
+            <input type="checkbox" id="m122-${esc(m.id)}" style="margin-top:5px">
+          </label>
+        </div>
+        <div class="stake-label" style="margin-top:6px">Esposizione max: ${euro(ladder.total)}</div>
+        `}
+
         <div class="result-buttons">
-          <button class="win" ${disabled?'disabled':''} onclick="registerById('${m.id}','WIN')">WIN</button>
-          <button class="null" onclick="registerById('${m.id}','NULLA')">NULLA</button>
-          <button class="loss" ${disabled?'disabled':''} onclick="registerById('${m.id}','LOSS')">LOSS</button>
+          <button class="win" ${disabled?'disabled':''} onclick="registerById('${esc(m.id)}','WIN')">WIN</button>
+          <button class="null" onclick="registerById('${esc(m.id)}','NULLA')">NULLA</button>
+          <button class="loss" ${disabled?'disabled':''} onclick="registerById('${esc(m.id)}','LOSS')">LOSS</button>
         </div>
       </div>
     </div>`;
@@ -107,14 +197,25 @@ window.registerById = function(id,result){
 function renderHistory(){
   const body = $('historyBody');
   if(!state.history.length){
-    body.innerHTML = '<tr><td colspan="7" class="empty">Nessun trade registrato.</td></tr>';
+    body.innerHTML = '<tr><td colspan="8" class="empty">Nessun trade registrato.</td></tr>';
     return;
   }
-  body.innerHTML = state.history.map(h => `<tr>
-    <td>${new Date(h.ts).toLocaleString('it-IT')}</td>
-    <td>${h.match}</td><td>${h.class}</td><td>${euro(h.stake)}</td><td>${h.result}</td>
-    <td class="${h.pl>0?'positive':h.pl<0?'negative':''}">${h.pl>0?'+':''}${euro(h.pl)}</td><td>${euro(h.bankroll_after)}</td>
-  </tr>`).join('');
+
+  body.innerHTML = state.history.map(h => {
+    const matched = formatMatched(h.matchedSteps);
+    // Retrocompatibilità: i vecchi record non hanno matchedSteps.
+    const stakeShown = h.stake != null ? Number(h.stake) : 0;
+    return `<tr>
+      <td>${new Date(h.ts).toLocaleString('it-IT')}</td>
+      <td>${esc(h.match)}</td>
+      <td>${esc(h.class || '—')}</td>
+      <td>${euro(stakeShown)}</td>
+      <td>${esc(matched)}</td>
+      <td>${esc(h.result)}</td>
+      <td class="${h.pl>0?'positive':h.pl<0?'negative':''}">${h.pl>0?'+':''}${euro(h.pl)}</td>
+      <td>${euro(h.bankroll_after)}</td>
+    </tr>`;
+  }).join('');
 }
 
 function renderStats(){
@@ -124,7 +225,9 @@ function renderStats(){
   const settled = wins + losses;
   const total = state.history.length;
   const profit = state.bankroll - state.initialBankroll;
-  const totalStaked = state.history.filter(h=>h.result!=='NULLA').reduce((s,h)=>s+Number(h.stake||0),0);
+  const totalStaked = state.history
+    .filter(h=>h.result!=='NULLA')
+    .reduce((s,h)=>s+Number(h.stake||0),0);
 
   $('bankrollValue').textContent = euro(state.bankroll);
   $('profitValue').textContent = `${profit>=0?'+':''}${euro(profit)}`;
@@ -152,10 +255,6 @@ $('saveBankrollBtn').addEventListener('click',()=>{
 
 $('undoBtn').addEventListener('click',()=>{
   if(!state.history.length) return;
-
-  // Ogni pressione elimina l'ultima registrazione disponibile nello storico.
-  // Premendo di nuovo elimina la penultima, poi la terzultima, e così via.
-  // La partita eliminata dallo storico ricompare automaticamente nella lista.
   const last = state.history.shift();
   state.bankroll = Number(last.bankroll_before);
   saveState();

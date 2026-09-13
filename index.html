@@ -10,7 +10,7 @@
   <header class="app-header">
     <div>
       <h1>Over 0.5 Trade Tracker</h1>
-      <p>REV 04 — Classificazione A+/A/B/C e stake automatico</p>
+      <p>REV 04 — Classificazione A+/A/B/C · ingressi 1,07 / 1,11 / 1,22</p>
     </div>
   </header>
 
@@ -38,7 +38,7 @@
       <div class="section-title-row">
         <div>
           <h2>Partite qualificate</h2>
-          <p>Lo stake è calcolato automaticamente sulla cassa corrente e arrotondato all'euro.</p>
+          <p>Lo stake base è calcolato sulla cassa corrente. Il tracker lo divide automaticamente tra 1,07 e 1,11 e aggiunge €5 alla quota 1,22.</p>
         </div>
         <button id="reloadBtn" class="secondary">Ricarica matches.json</button>
       </div>
@@ -51,7 +51,7 @@
         <table>
           <thead>
             <tr>
-              <th>Data</th><th>Partita</th><th>Classe</th><th>Stake</th><th>Esito</th><th>P/L</th><th>Cassa</th>
+              <th>Data</th><th>Partita</th><th>Classe</th><th>Stake</th><th>Abbinati</th><th>Esito</th><th>P/L</th><th>Cassa</th>
             </tr>
           </thead>
           <tbody id="historyBody"></tbody>
