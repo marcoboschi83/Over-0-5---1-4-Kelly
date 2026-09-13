@@ -1,0 +1,20 @@
+OVER 0,5 TRADE TRACKER V6 - REV4 SCALARE
+
+File da sostituire nel repository:
+1) index.html
+2) sw.js
+
+NON sostituire matches.json e manifest.json.
+
+Novità:
+- quote fisse 1,07 / 1,11 / 1,22;
+- totale consigliato = valore dello stake selezionato + 5 euro;
+- distribuzione proporzionale al test 17/8/5 su 30 euro;
+- prima di WIN/LOSS/NULLA si registrano i gradini realmente abbinati;
+- nel report compare lo storico dei gradini abbinati;
+- i vecchi record restano leggibili e mostrano "—" nella colonna Abbinati;
+- usa la stessa chiave localStorage over05TrackerV4, quindi lo storico esistente non viene azzerato;
+- WIN nuove: P/L calcolato dalle quote realmente abbinate, al netto del 4,5% di commissione;
+- undo multiplo tramite stack (fino a 30 snapshot).
+
+CONSIGLIO: prima di sostituire i file fai un Backup dal tracker attuale.
