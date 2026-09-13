@@ -110,7 +110,8 @@ function registerResult(match, result){
     return;
   }
   if(result === 'NULLA' && matched.steps.length){
-    if(!confirm('Hai selezionato uno o più stake abbinati ma stai registrando NULLA. Continuare?')) return;
+    alert('NULLA significa nessun ordine abbinato. Deseleziona gli stake oppure registra WIN/LOSS.');
+    return;
   }
 
   let pl = 0;
@@ -128,6 +129,8 @@ function registerResult(match, result){
     stake_pct: match.stake_pct,
     stake: matched.stake,
     guide_stake: calcStake(match),
+    total_trade: ladderFor(match).total,
+    total_pct: ladderFor(match).totalPct,
     result,
     matchedSteps: matched.steps.map(x=>({q:x.q, stake:x.stake})),
     pl,
@@ -157,7 +160,6 @@ function renderMatches(){
   }
 
   root.innerHTML = availableMatches.map(m => {
-    const stake = calcStake(m);
     const ladder = ladderFor(m);
     const cls = String(m.class || 'C').toLowerCase().replace('+','p');
     const disabled = Number(m.stake_pct || 0) <= 0;
@@ -177,16 +179,12 @@ function renderMatches(){
       </div>
 
       <div class="stake-box">
-        <div class="stake-label">Totale trade classe (${disabled ? 0 : ladder.totalPct}%)</div>
-        <div class="stake-value">${disabled ? 'NO TRADE' : euro(ladder.total)}</div>
+        <div class="stake-label">Totale trade (${disabled ? 0 : ladder.totalPct}% della cassa)</div>
+        <div class="stake-value">${disabled ? 'NO TRADE' : euro(ladder.total)}</div>${disabled ? '' : `<div class="stake-label" style="margin-top:2px">Somma ingressi: ${euro(ladder.q107)} + ${euro(ladder.q111)} + ${euro(ladder.q122)} = <strong>${euro(ladder.q107+ladder.q111+ladder.q122)}</strong></div>`}
 
         ${disabled ? '' : `
-        <div style="margin-top:10px;padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb;color:#111827">
-          <div style="font-size:13px;color:#6b7280">Totale trade da predisporre (${ladder.totalPct}% cassa)</div>
-          <div style="font-size:24px;font-weight:800;margin-top:2px">${euro(ladder.total)}</div><div style="font-size:11px;color:#6b7280;margin-top:2px">Somma 3 ingressi: ${euro(ladder.q107+ladder.q111+ladder.q122)}</div>
-        </div>
-
-        <div style="margin-top:10px;font-size:13px"><strong>Budget singoli da inserire</strong></div>
+        
+        <div style="margin-top:10px;font-size:13px"><strong>Budget da inserire sulle 3 quote</strong></div>
         <div class="trade-ladder-grid" style="margin-top:6px">
           <label style="border:1px solid #d1d5db;border-radius:8px;padding:8px;text-align:center">
             <div style="font-size:12px;color:#6b7280">Quota</div>
@@ -212,7 +210,7 @@ function renderMatches(){
         </div>
 
         <div id="preview-${esc(m.id)}" class="stake-label" style="margin-top:7px">
-          Seleziona gli ordini realmente abbinati prima di registrare WIN o LOSS.
+          Spunta solo gli ordini realmente abbinati, poi registra WIN / NULLA / LOSS.
         </div>
         `}
 

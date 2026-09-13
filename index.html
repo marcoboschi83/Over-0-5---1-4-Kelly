@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Over 0.5 Trade Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=rev04-v5" />
 
 <style>
   html,body{max-width:100%;overflow-x:hidden}
@@ -43,7 +46,7 @@
   <header class="app-header">
     <div>
       <h1>Over 0.5 Trade Tracker</h1>
-      <p>REV 04 — Classificazione A+/A/B/C · ingressi 1,07 / 1,11 / 1,22</p>
+      <p>REV 04 · V5 — A+/A/B/C · ingressi 1,07 / 1,11 / 1,22</p>
     </div>
   </header>
 
@@ -84,7 +87,7 @@
         <table>
           <thead>
             <tr>
-              <th>Data</th><th>Partita</th><th>Classe</th><th>Stake</th><th>Abbinati</th><th>Esito</th><th>P/L</th><th>Cassa</th>
+              <th>Data</th><th>Partita</th><th>Classe</th><th>Stake eff.</th><th>Abbinati</th><th>Esito</th><th>P/L</th><th>Cassa</th>
             </tr>
           </thead>
           <tbody id="historyBody"></tbody>
@@ -96,6 +99,13 @@
     </section>
   </main>
 
-  <script src="tracker.js"></script>
+  <script src="tracker.js?v=rev04-v5"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js?v=rev04-v5').then(r => r.update()).catch(()=>{});
+  });
+}
+</script>
 </body>
 </html>
