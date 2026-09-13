@@ -21,23 +21,34 @@ function calcStake(match){
 }
 
 /*
-  REV04 ladder:
-  - totale trade = stake classe originale + €5
-  - i €5 aggiuntivi sono inclusi nel totale e vanno sulla quota 1,22
-  - il resto (stake classe) viene diviso tra 1,07 e 1,11 in rapporto 17/8
-  Esempio su cassa €100:
-  A+ 25 + 5 = €30 -> 17 / 8 / 5
-  A  20 + 5 = €25 -> 14 / 6 / 5
-  B  15 + 5 = €20 -> 10 / 5 / 5 circa (arrotondamento coerente col totale)
+  REV04 ladder percentuale:
+  - A+ = 30% totale cassa, proporzione 17/8/5
+  - A  = 25% totale cassa, proporzione 14/6/5
+  - B  = 20% totale cassa, proporzione 10/5/5
+  Il +5 è quindi +5 punti percentuali rispetto allo stake_pct originale.
 */
 function ladderFor(match){
-  const base = calcStake(match);
-  if(base <= 0) return {base:0, q107:0, q111:0, q122:0, total:0};
-  const total = base + 5;
-  const q122 = 5;
-  const q107 = Math.round(base * 17 / 25);
-  const q111 = base - q107;
-  return {base, q107, q111, q122, total};
+  const cls = String(match.class || '').toUpperCase();
+  const originalPct = Number(match.stake_pct || 0);
+  if(originalPct <= 0) return {originalPct:0,totalPct:0,total:0,q107:0,q111:0,q122:0};
+
+  const totalPct = originalPct + 5;
+  const total = Math.max(0, Math.round(state.bankroll * totalPct / 100));
+
+  let weights;
+  if(cls === 'A+') weights = [17,8,5];
+  else if(cls === 'A') weights = [14,6,5];
+  else if(cls === 'B') weights = [10,5,5];
+  else weights = [0,0,0];
+
+  const sumW = weights.reduce((a,b)=>a+b,0);
+  if(!sumW || !total) return {originalPct,totalPct,total:0,q107:0,q111:0,q122:0};
+
+  const q107 = Math.round(total * weights[0] / sumW);
+  const q122 = Math.round(total * weights[2] / sumW);
+  const q111 = total - q107 - q122;
+
+  return {originalPct,totalPct,total,q107,q111,q122};
 }
 
 function matchedFromUI(id){
@@ -166,12 +177,12 @@ function renderMatches(){
       </div>
 
       <div class="stake-box">
-        <div class="stake-label">Stake base classe (${m.stake_pct || 0}%)</div>
-        <div class="stake-value">${disabled ? 'NO TRADE' : euro(stake)}</div>
+        <div class="stake-label">Totale trade classe (${disabled ? 0 : ladder.totalPct}%)</div>
+        <div class="stake-value">${disabled ? 'NO TRADE' : euro(ladder.total)}</div>
 
         ${disabled ? '' : `
-        <div style="margin-top:10px;padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb">
-          <div style="font-size:13px;color:#6b7280">Totale trade da predisporre</div>
+        <div style="margin-top:10px;padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb;color:#111827">
+          <div style="font-size:13px;color:#6b7280">Totale trade da predisporre (${ladder.totalPct}% cassa)</div>
           <div style="font-size:24px;font-weight:800;margin-top:2px">${euro(ladder.total)}</div><div style="font-size:11px;color:#6b7280;margin-top:2px">Somma 3 ingressi: ${euro(ladder.q107+ladder.q111+ladder.q122)}</div>
         </div>
 
