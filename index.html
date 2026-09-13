@@ -1,27 +1,20 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<meta name="app-version" content="V7">
-<link rel="manifest" href="manifest.json">
-<title>Over 0,5 Trade Tracker V7</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827"><meta name="app-version" content="V7">
+<link rel="manifest" href="manifest.json"><title>Over 0,5 Trade Tracker V7</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}.app{max-width:900px;margin:auto;padding:14px}h1{font-size:23px;margin:5px 0 14px}.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:13px;box-shadow:0 2px 10px #0001}h2{font-size:18px;margin:0 0 11px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:#f9fafb;border-radius:11px;padding:11px}.label{font-size:12px;color:#6b7280}.value{font-size:20px;font-weight:700;margin-top:4px}button,select{font:inherit;width:100%;padding:12px;border:1px solid #d1d5db;border-radius:9px}button{background:#111827;color:#fff;border:0;font-weight:700;cursor:pointer}.win{background:#15803d}.loss{background:#b91c1c}.null{background:#6b7280}.secondary{background:#e5e7eb;color:#111827}.danger{background:#b91c1c}.four{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.muted{font-size:13px;color:#6b7280}.next{text-align:center;font-size:25px;font-weight:800;margin:5px}.normal{background:#ecfdf5}.recovery{background:#fff7ed}.hidden{display:none!important}.toast{padding:10px;border-radius:9px;background:#f9fafb;margin-top:8px;font-size:13px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 5px;border-bottom:1px solid #e5e7eb;text-align:left;white-space:nowrap}th{font-size:11px;color:#6b7280}.positive{color:#15803d;font-weight:700}.negative{color:#b91c1c;font-weight:700}.stakegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stake{padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb}.stake strong{display:block}.badge{font-size:11px;color:#6b7280}canvas{width:100%;height:260px;display:block}.check{display:block;padding:7px 0}.check input{width:auto;margin-right:7px}.version{font-size:11px;color:#6b7280;text-align:right;margin-top:-8px;margin-bottom:8px}.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.step{border:1px solid #d1d5db;border-radius:11px;padding:10px;text-align:center;background:#f9fafb}.step .q{font-size:13px;color:#6b7280}.step .amt{font-size:22px;font-weight:800;margin:3px 0}.matched{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.matched label{padding:10px 6px;border:1px solid #d1d5db;border-radius:9px;text-align:center;background:#fff}.matched input{width:auto}.warn{background:#fff7ed;border:1px solid #fed7aa;padding:9px;border-radius:9px;margin-top:9px;font-size:13px}@media(min-width:600px){.stakegrid{grid-template-columns:repeat(5,1fr)}.four{grid-template-columns:repeat(4,1fr)}}
-</style>
-</head>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}.app{max-width:850px;margin:auto;padding:14px}h1{font-size:23px;margin:5px 0 14px}.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:13px;box-shadow:0 2px 10px #0001}h2{font-size:18px;margin:0 0 11px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:#f9fafb;border-radius:11px;padding:11px}.label{font-size:12px;color:#6b7280}.value{font-size:20px;font-weight:700;margin-top:4px}button,select{font:inherit;width:100%;padding:12px;border:1px solid #d1d5db;border-radius:9px}button{background:#111827;color:#fff;border:0;font-weight:700;cursor:pointer}.win{background:#15803d}.loss{background:#b91c1c}.null{background:#6b7280}.secondary{background:#e5e7eb;color:#111827}.danger{background:#b91c1c}.four{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.muted{font-size:13px;color:#6b7280}.next{text-align:center;font-size:25px;font-weight:800;margin:5px}.normal{background:#ecfdf5}.recovery{background:#fff7ed}.hidden{display:none!important}.toast{padding:10px;border-radius:9px;background:#f9fafb;margin-top:8px;font-size:13px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 5px;border-bottom:1px solid #e5e7eb;text-align:left}th{font-size:11px;color:#6b7280}.positive{color:#15803d;font-weight:700}.negative{color:#b91c1c;font-weight:700}.stakegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stake{padding:10px;border-radius:10px;background:#f9fafb;border:1px solid #e5e7eb}.stake strong{display:block}.badge{font-size:11px;color:#6b7280}canvas{width:100%;height:260px;display:block}.check{display:block;padding:7px 0}.check input{width:auto;margin-right:7px}.version{font-size:11px;color:#6b7280;text-align:right;margin-top:-8px;margin-bottom:8px}.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.step{border:1px solid #d1d5db;border-radius:11px;padding:10px;text-align:center;background:#f9fafb}.step .q{font-size:13px;color:#6b7280}.step .amt{font-size:22px;font-weight:800;margin:3px 0}.matched{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.matched label{padding:10px 6px;border:1px solid #d1d5db;border-radius:9px;text-align:center;background:#fff}.matched input{width:auto}.warn{background:#fff7ed;border:1px solid #fed7aa;padding:9px;border-radius:9px;margin-top:9px;font-size:13px}@media(min-width:600px){.stakegrid{grid-template-columns:repeat(5,1fr)}.four{grid-template-columns:repeat(4,1fr)}}
+</style></head>
 <body><div class="app">
-<h1>⚽ Over 0,5 — Trade Tracker V7</h1><div class="version">REV4 · classi A+/A/B · quote 1,07 / 1,11 / 1,22</div>
-
+<h1>⚽ Over 0,5 — Trade Tracker V5</h1><div class="version">REV4 · classi A+/A/B · quote 1,07 / 1,11 / 1,22</div>
 <div class="card"><div class="grid">
 <div class="stat"><div class="label">Budget iniziale</div><div class="value" id="initial">€100,00</div></div>
 <div class="stat"><div class="label">Cassa attuale</div><div class="value" id="budget">€100,00</div></div>
 <div class="stat"><div class="label">Profitto totale</div><div class="value" id="profit">€0,00</div></div>
 <div class="stat"><div class="label">Totale prelevato</div><div class="value" id="withdrawn">€0,00</div></div>
-<div class="stat"><div class="label">Weekend</div><div class="value" id="weekend">1</div></div>
-</div></div>
-
+<div class="stat"><div class="label">Weekend</div><div class="value" id="weekend">1</div></div></div></div>
 <div class="card"><h2>📊 Statistiche trade</h2><div class="grid">
 <div class="stat"><div class="label">Trade totali</div><div class="value" id="totalTrades">0</div></div>
 <div class="stat"><div class="label">WIN</div><div class="value positive" id="totalWins">0</div></div>
@@ -29,61 +22,80 @@
 <div class="stat"><div class="label">LOSS</div><div class="value negative" id="totalLosses">0</div></div>
 <div class="stat"><div class="label">WIN + NULLA / Trade</div><div class="value" id="winNullRate">0,0%</div></div>
 </div></div>
-
 <div class="card" id="modeCard"><h2>Stato sistema</h2><div id="mode"><b>🟢 NORMALE</b></div><div class="next" id="selectedStake">—</div><div class="muted" id="detail">Seleziona partita e stake.</div></div>
-
 <div class="card"><h2>📋 Partite qualificate</h2><select id="matchSelect"><option value="">Seleziona partita...</option></select><div id="matchInfo" class="muted" style="margin-top:7px"></div></div>
-
-<div class="card"><h2>🎯 REV4 — stake da impostare</h2>
-<div class="muted">La quota 1,07 e la quota 1,11 dividono lo stake base della classe nel rapporto 17/8. Alla quota 1,22 si aggiungono <b>€5</b>. Su cassa €100: <b>A+ 17/8/5 · A 14/6/5 · B 10/5/5</b>.</div>
+<div class="card">
+<h2>🎯 REV4 — stake da impostare</h2>
+<div class="muted">Lo stake base dipende dalla classificazione della partita: <b>A+ 25% · A 20% · B 15%</b> della cassa attuale. Il base viene diviso tra 1,07 e 1,11 in rapporto 17/8; alla quota 1,22 si aggiungono <b>€5</b>.</div>
 <div class="ladder">
-<div class="step"><div class="q">Quota 1,07</div><div class="amt" id="rec107">—</div><div class="badge">Ingresso anticipato</div></div>
-<div class="step"><div class="q">Quota 1,11</div><div class="amt" id="rec111">—</div><div class="badge">Secondo ingresso</div></div>
-<div class="step"><div class="q">Quota 1,22</div><div class="amt" id="rec122">—</div><div class="badge">+ €5 aggiuntivi</div></div>
+  <div class="step"><div class="q">Quota 1,07</div><div class="amt" id="rec107">—</div><div class="badge">Ingresso anticipato</div></div>
+  <div class="step"><div class="q">Quota 1,11</div><div class="amt" id="rec111">—</div><div class="badge">Secondo ingresso</div></div>
+  <div class="step"><div class="q">Quota 1,22</div><div class="amt" id="rec122">—</div><div class="badge">+ €5 aggiuntivi</div></div>
 </div>
-<div class="muted" id="ladderSummary" style="margin-top:8px">Seleziona una partita per vedere la distribuzione.</div></div>
-
-<div class="card"><h2>➕ Registra trade</h2>
-<select id="stakeSelect"><option value="">Seleziona stake...</option></select>
-<div style="height:9px"></div><div><b>Gradini effettivamente abbinati</b></div>
+<div class="muted" id="ladderSummary" style="margin-top:8px">Seleziona una partita per vedere la distribuzione.</div>
+</div>
+<div class="card"><h2>➕ Registra trade</h2><select id="stakeSelect"><option value="">Seleziona stake...</option></select><div style="height:9px"></div>
+<div><b>Gradini effettivamente abbinati</b></div>
 <div class="matched">
 <label><input type="checkbox" id="m107"> 1,07</label>
 <label><input type="checkbox" id="m111"> 1,11</label>
 <label><input type="checkbox" id="m122"> 1,22</label>
 </div>
 <div id="matchedPreview" class="muted" style="margin:8px 0">Nessun gradino selezionato.</div>
-<div class="four">
-<button type="button" id="winBtn" class="win">✅ WIN</button>
-<button type="button" id="lossBtn" class="loss">❌ LOSS</button>
-<button type="button" id="nullBtn" class="null">⚪ NULLA</button>
-<button type="button" id="withdrawBtn" class="secondary">💸 PRELIEVO</button>
-</div>
+<div class="four"><button type="button" id="winBtn" class="win">✅ WIN</button><button type="button" id="lossBtn" class="loss">❌ LOSS</button><button type="button" id="nullBtn" class="null">⚪ NULLA</button><button type="button" id="withdrawBtn" class="secondary">💸 PRELIEVO</button></div>
 <div id="fusionBox" class="hidden" style="margin-top:12px"></div><div id="message"></div></div>
-
 <div class="card"><h2>💰 Valore attuale degli stake</h2><div id="activeStakes" class="stakegrid"></div></div>
 <div class="card"><h2>📈 Andamento cassa</h2><canvas id="cashChart"></canvas></div>
-
-<div class="card"><h2>📊 Report completo</h2><div style="overflow-x:auto"><table>
-<thead><tr><th>#</th><th>Weekend</th><th>Stake</th><th>Partita</th><th>Classe</th><th>€</th><th>Esito</th><th>Abbinati</th><th>P/L</th></tr></thead>
-<tbody id="report"></tbody></table></div></div>
-
+<div class="card"><h2>📊 Report completo</h2><div style="overflow-x:auto"><table><thead><tr><th>#</th><th>Weekend</th><th>Stake</th><th>Partita</th><th>Classe</th><th>€</th><th>Esito</th><th>Abbinati</th><th>P/L</th></tr></thead><tbody id="report"></tbody></table></div></div>
 <div class="card"><h2>📅 Storico weekend</h2><div id="weekendHistory" class="muted"></div></div>
-<div class="card"><h2>↩️ Correzione</h2><button type="button" id="undoBtn" class="secondary">Annulla ultima registrazione</button><div class="muted" style="margin-top:7px">Ripristina l'intera situazione precedente. Puoi premerlo più volte, finché esistono snapshot disponibili.</div></div>
-
-<div class="card"><h2>⚙️ Gestione</h2><div class="four">
-<button type="button" id="weekendBtn" class="secondary">📅 Nuovo weekend</button>
-<button type="button" id="backupBtn" class="secondary">💾 Backup</button>
-<button type="button" id="restoreBtn" class="secondary">📥 Ripristina</button>
-<button type="button" id="resetBtn" class="danger">⚠️ Azzera tutto</button>
-</div><input id="file" class="hidden" type="file" accept="application/json,.json"></div>
+<div class="card"><h2>↩️ Correzione</h2><button type="button" id="undoBtn" class="secondary">Annulla ultima registrazione</button><div class="muted" style="margin-top:7px">Ripristina stake, cassa, partita disponibile e fusioni/split dell’ultima operazione.</div></div>
+<div class="card"><h2>⚙️ Gestione</h2><div class="four"><button type="button" id="weekendBtn" class="secondary">📅 Nuovo weekend</button><button type="button" id="backupBtn" class="secondary">💾 Backup</button><button type="button" id="restoreBtn" class="secondary">📥 Ripristina</button><button type="button" id="resetBtn" class="danger">⚠️ Azzera tutto</button></div><input id="file" class="hidden" type="file" accept="application/json,.json"></div>
 </div>
-
 <script>
 'use strict';
-const KEY='over05TrackerV4', LEGACY_KEYS=['over05TrackerV5'], INITIAL=100, COMM=0.045;
+const KEY='over05TrackerV4', LEGACY_KEYS=['over05TrackerV5'], INITIAL=100, RATE=0.10, COMM=0.045;
 let data=loadData(), matches=[];
+// Ripara automaticamente i vecchi record LOSS salvati con P/L=0 e riallinea la cassa.
+function repairLossAccounting(d){
+  const records=[];
+  (d.weekends||[]).forEach(w=>{if(Array.isArray(w.trades)) records.push(...w.trades);});
+  if(Array.isArray(d.trades)) records.push(...d.trades);
+  let changed=false;
+  records.forEach(t=>{
+    if(t.result==='LOSS' && Number(t.pl)===0){
+      const v=Math.abs(Number(t.stakeValue)||0);
+      if(v>0){t.pl=-v;changed=true;}
+    }
+  });
+  // La cassa è il capitale iniziale + tutti i P/L reali, comprese le LOSS e i prelievi.
+  const totalPL=records.reduce((a,t)=>a+(Number(t.pl)||0),0);
+  const repairedCash=Number(d.initialBudget)||INITIAL;
+  const newBudget=Math.round((repairedCash+totalPL)*100)/100;
+  if(Math.abs(Number(d.budget)-newBudget)>0.001){d.budget=newBudget;changed=true;}
+  // Riallinea i totali dei weekend senza eliminare alcuna registrazione.
+  let running=Number(d.initialBudget)||INITIAL;
+  (d.weekends||[]).forEach(w=>{
+    const arr=Array.isArray(w.trades)?w.trades:[];
+    w.start=running;
+    running+=arr.reduce((a,t)=>a+(Number(t.pl)||0),0);
+    w.budgetEnd=running;
+  });
+  const cur=Array.isArray(d.trades)?d.trades:[];
+  d.weekendStart=running;
+  if(cur.length){
+    d.weekendStart=running;
+    running+=cur.reduce((a,t)=>a+(Number(t.pl)||0),0);
+  }
+  if(changed){
+    const all=records.filter(t=>t.time).sort((a,b)=>new Date(a.time)-new Date(b.time));
+    d.cashHistory=[{label:'Inizio',cash:Number(d.initialBudget)||INITIAL}];
+    let cash=Number(d.initialBudget)||INITIAL;
+    all.forEach(t=>{cash+=Number(t.pl)||0;d.cashHistory.push({label:t.match||t.stakeName||t.result,cash:Math.round(cash*100)/100});});
+  }
+  return d;
+}
 
-function fresh(){return {initialBudget:INITIAL,budget:INITIAL,withdrawn:0,weekendNo:1,weekendStart:INITIAL,stakes:Array.from({length:10},(_,i)=>({id:String(i+1),name:'Stake '+(i+1),value:10,status:'active',trades:0,pl:0})),trades:[],groups:[],weekends:[],completedMatches:[],cashHistory:[{label:'Inizio',cash:INITIAL}],undoStack:[]};}
+function fresh(){return {initialBudget:INITIAL,budget:INITIAL,withdrawn:0,weekendNo:1,weekendStart:INITIAL,stakes:Array.from({length:10},(_,i)=>({id:String(i+1),name:'Stake '+(i+1),value:10,status:'active',trades:0,pl:0})),trades:[],groups:[],weekends:[],completedMatches:[],cashHistory:[{label:'Inizio',cash:INITIAL}]};}
 function normalize(d){
  if(!d||!Array.isArray(d.stakes)) return fresh();
  d.initialBudget=Number.isFinite(Number(d.initialBudget))?Number(d.initialBudget):INITIAL;
@@ -91,38 +103,57 @@ function normalize(d){
  d.withdrawn=Number(d.withdrawn)||0; d.weekendNo=Number(d.weekendNo)||1; d.weekendStart=Number(d.weekendStart)||d.initialBudget;
  d.trades=Array.isArray(d.trades)?d.trades:[]; d.groups=Array.isArray(d.groups)?d.groups:[]; d.weekends=Array.isArray(d.weekends)?d.weekends:[]; d.completedMatches=Array.isArray(d.completedMatches)?d.completedMatches:[];
  d.cashHistory=Array.isArray(d.cashHistory)&&d.cashHistory.length?d.cashHistory:[{label:'Inizio',cash:d.initialBudget}];
- d.undoStack=Array.isArray(d.undoStack)?d.undoStack:[];
- return d;
-}
-function migrateV5Data(d){
- if(!d || !Array.isArray(d.groups)) return d;
- d.groups.forEach(g=>{
-   if(!Array.isArray(g.members)||g.members.length<2||!Array.isArray(g.originalValues)) return;
-   const all=g.originalValues.reduce((a,x)=>a+(Number(x.value)||0),0);
-   const first=g.originalValues.find(x=>String(x.id)===String(g.members[0]));
-   if(!first)return;
-   const survivor=all-(Number(first.value)||0);
-   if(Math.abs(Number(g.value)-all)<0.001 && Math.abs(Number(g.target)-all)<0.001){
-     g.value=roundEuro(survivor);g.target=roundEuro(all);g.lossValue=roundEuro(first.value);g.ruleVersion='V5.2';
-     const gs=d.stakes.find(x=>x.id===g.id);if(gs)gs.value=g.value;
-   }
- });
- return d;
-}
-function repairLossAccounting(d){
- const records=[];(d.weekends||[]).forEach(w=>{if(Array.isArray(w.trades))records.push(...w.trades)});if(Array.isArray(d.trades))records.push(...d.trades);
- let changed=false;
- records.forEach(t=>{if(t.result==='LOSS'&&Number(t.pl)===0){const v=Math.abs(Number(t.stakeValue)||0);if(v>0){t.pl=-v;changed=true;}}});
- if(changed){const totalPL=records.reduce((a,t)=>a+(Number(t.pl)||0),0);d.budget=Math.round(((Number(d.initialBudget)||INITIAL)+totalPL)*100)/100;}
  return d;
 }
 function loadData(){
  try{
-   const old=localStorage.getItem(KEY);if(old)return repairLossAccounting(migrateV5Data(normalize(JSON.parse(old))));
-   for(const k of LEGACY_KEYS){const raw=localStorage.getItem(k);if(raw){const d=repairLossAccounting(migrateV5Data(normalize(JSON.parse(raw))));localStorage.setItem(KEY,JSON.stringify(d));return d;}}
+  const old=localStorage.getItem(KEY); if(old){const d=repairLossAccounting(migrateV5Data(normalize(JSON.parse(old)))); localStorage.setItem(KEY,JSON.stringify(d)); return d;}
+  for(const k of LEGACY_KEYS){const raw=localStorage.getItem(k); if(raw){const d=repairLossAccounting(migrateV5Data(normalize(JSON.parse(raw)))); localStorage.setItem(KEY,JSON.stringify(d)); return d;}}
  }catch(e){}
  return fresh();
 }
+
+function migrateV5Data(d){
+  // Corregge le fusioni V5 precedenti: la puntata persa NON entra nel capitale iniziale del recupero.
+  // Il suo valore resta però nel target da recuperare.
+  if(!d || !Array.isArray(d.groups)) return d;
+  d.groups.forEach(g=>{
+    if(!Array.isArray(g.members)||g.members.length<2||!Array.isArray(g.originalValues)) return;
+    const all=g.originalValues.reduce((a,x)=>a+(Number(x.value)||0),0);
+    const first=g.originalValues.find(x=>String(x.id)===String(g.members[0]));
+    if(!first) return;
+    const survivor=all-(Number(first.value)||0);
+    // Vecchia V5: value=all e target=all. Nuova V5: value=survivor e target=all.
+    if(Math.abs(Number(g.value)-all)<0.001 && Math.abs(Number(g.target)-all)<0.001){
+      g.value=roundEuro(survivor);
+      g.target=roundEuro(all);
+      g.lossValue=roundEuro(first.value);
+      g.ruleVersion='V5.2';
+      const gs=d.stakes.find(x=>x.id===g.id);
+      if(gs) gs.value=g.value;
+    }
+  });
+  return d;
+}
+function allTradeRecords(){
+  const out=[];
+  (data.weekends||[]).forEach(w=>{if(Array.isArray(w.trades)) out.push(...w.trades);});
+  if(Array.isArray(data.trades)) out.push(...data.trades);
+  return out;
+}
+function renderStats(){
+  const ts=allTradeRecords().filter(t=>['WIN','LOSS','NULLA'].includes(t.result));
+  const wins=ts.filter(t=>t.result==='WIN').length;
+  const nulls=ts.filter(t=>t.result==='NULLA').length;
+  const losses=ts.filter(t=>t.result==='LOSS').length;
+  const rate=ts.length?((wins+nulls)/ts.length*100):0;
+  document.getElementById('totalTrades').textContent=ts.length;
+  document.getElementById('totalWins').textContent=wins;
+  document.getElementById('totalNulls').textContent=nulls;
+  document.getElementById('totalLosses').textContent=losses;
+  document.getElementById('winNullRate').textContent=rate.toFixed(1).replace('.',',')+'%';
+}
+
 function save(){localStorage.setItem(KEY,JSON.stringify(data));}
 function money(x){return '€'+Number(x||0).toFixed(2).replace('.',',');}
 function roundEuro(x){return Math.round(Number(x)||0);}
@@ -130,9 +161,8 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function escAttr(s){return esc(s).replace(/`/g,'&#096;');}
 function active(){return data.stakes.filter(s=>s.status==='active'||s.status==='group');}
 function matchName(m){return m?.match||m?.partita||((m?.home||'')+' - '+(m?.away||''));}
-function matchKey(m){return [m?.id||'',m?.datetime||m?.date||m?.data||'',matchName(m)].join('|');}
+function matchKey(m){return [m.weekend||'',m.date||m.data||'',m.time||m.ora||'',matchName(m)].join('|');}
 function selectedMatch(){const v=document.getElementById('matchSelect').value;return matches.find((m,i)=>String(i)===v);}
-function selectedStakeObj(){return active().find(x=>x.id===document.getElementById('stakeSelect').value);}
 function isDone(m){return data.completedMatches.includes(matchKey(m));}
 
 function matchClass(m){return String(m?.class||m?.classification||m?.classificazione||'').toUpperCase();}
@@ -164,8 +194,8 @@ function updateLadder(){
  document.getElementById('rec107').textContent=money(l.a);
  document.getElementById('rec111').textContent=money(l.b);
  document.getElementById('rec122').textContent=money(l.c);
- const gross=l.a*.07+l.b*.11+l.c*.22,net=gross*(1-COMM);
- document.getElementById('ladderSummary').innerHTML=`Classe <b>${esc(cls)}</b> · stake base ${money(l.base)} (${classPct(m)}% della cassa) + €5 @1,22 = esposizione massima <b>${money(l.total)}</b> · WIN netto teorico se entrano tutti <b>${money(net)}</b> (${(net/l.total*100).toFixed(1).replace('.',',')}%)`;
+ const gross=l.a*.07+l.b*.11+l.c*.22, net=gross*(1-COMM);
+ document.getElementById('ladderSummary').innerHTML=`Classe <b>${esc(cls)}</b> · stake base ${money(l.base)} (${classPct(m)}% della cassa) + €5 @1,22 = esposizione massima <b>${money(l.total)}</b> · WIN netto teorico se entrano tutti <b>${money(net)}</b>`;
  updateMatchedPreview();
 }
 function updateMatchedPreview(){
@@ -174,68 +204,46 @@ function updateMatchedPreview(){
  el.innerHTML=`Abbinato: <b>${x.steps.map(s=>s.q.toFixed(2).replace('.',',')).join(' + ')}</b> · stake effettivo ${money(x.stake)} · WIN netto stimato ${money(x.net)}`;
 }
 function clearMatched(){['m107','m111','m122'].forEach(id=>document.getElementById(id).checked=false);updateMatchedPreview();}
-
-async function loadMatches(){
- try{
-   const r=await fetch('matches.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;
-   const j=await r.json();matches=Array.isArray(j)?j:(Array.isArray(j.matches)?j.matches:[]);
- }catch(e){matches=[];}
- renderMatches();
-}
-function renderMatches(){
- const sel=document.getElementById('matchSelect'),old=sel.value;sel.innerHTML='<option value="">Seleziona partita...</option>';
- matches.forEach((m,i)=>{
-   if(isDone(m))return;
-   const meta=[m.datetime||m.date||m.data,matchClass(m)?'Classe '+matchClass(m):'',m.step1_pct!=null?'Step1 '+m.step1_pct+'%':'',m.step3_status].filter(Boolean).join(' · ');
-   const o=document.createElement('option');o.value=String(i);o.textContent=matchName(m)+(meta?' — '+meta:'');sel.appendChild(o);
- });
- if([...sel.options].some(o=>o.value===old))sel.value=old;showMatchInfo();
-}
-function showMatchInfo(){
- const m=selectedMatch(),el=document.getElementById('matchInfo');
- el.textContent=m?[m.datetime||m.date||m.data,matchClass(m)?'Classe '+matchClass(m):'',m.step1_pct!=null?'Step1 '+m.step1_pct+'%':'',m.step3_status,m.note].filter(Boolean).join(' · '):'';
- clearMatched();updateLadder();
-}
-function renderSelect(){
- const s=document.getElementById('stakeSelect'),old=s.value;s.innerHTML='<option value="">Seleziona stake...</option>';
- active().forEach(x=>{const o=document.createElement('option');o.value=x.id;o.textContent=x.name+' — '+money(x.value);s.appendChild(o)});
- if([...s.options].some(o=>o.value===old))s.value=old;
-}
+async function loadMatches(){try{const r=await fetch('matches.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('matches.json');const j=await r.json();matches=Array.isArray(j)?j:(Array.isArray(j.matches)?j.matches:[]);}catch(e){matches=[];}renderMatches();}
+function renderMatches(){const sel=document.getElementById('matchSelect'),old=sel.value;sel.innerHTML='<option value="">Seleziona partita...</option>';matches.forEach((m,i)=>{if(isDone(m))return;const meta=[m.datetime||m.date||m.data,matchClass(m)?'Classe '+matchClass(m):'',m.step1_pct!=null?'Step1 '+m.step1_pct+'%':'',m.step3_status].filter(Boolean).join(' · ');const o=document.createElement('option');o.value=String(i);o.textContent=matchName(m)+(meta?' — '+meta:'');sel.appendChild(o);});if([...sel.options].some(o=>o.value===old))sel.value=old;showMatchInfo();}
+function showMatchInfo(){const m=selectedMatch();document.getElementById('matchInfo').textContent=m?[m.datetime||m.date||m.data,matchClass(m)?'Classe '+matchClass(m):'',m.step1_pct!=null?'Step1 '+m.step1_pct+'%':'',m.step3_status,m.note].filter(Boolean).join(' · '):'';clearMatched();updateLadder();}
+function renderSelect(){const s=document.getElementById('stakeSelect'),old=s.value;s.innerHTML='<option value="">Seleziona stake...</option>';active().forEach(x=>{const o=document.createElement('option');o.value=x.id;o.textContent=x.name+' — '+money(x.value);s.appendChild(o);});if([...s.options].some(o=>o.value===old))s.value=old;}
 function renderStakes(){document.getElementById('activeStakes').innerHTML=active().map(s=>`<div class="stake"><strong>${esc(s.name)}</strong><div>${money(s.value)}</div><span class="badge">${s.trades||0} trade · ${(s.pl||0)>=0?'+':''}${money(s.pl||0)}</span></div>`).join('');}
 function icon(x){return x==='WIN'?'✅':x==='LOSS'?'❌':x==='NULLA'?'⚪':x==='SPLIT'?'↪️':x==='PRELIEVO'?'💸':x==='FUSIONE'?'🔗':'•';}
 function stepsLabel(t){if(!Array.isArray(t.matchedSteps)||!t.matchedSteps.length)return '—';return t.matchedSteps.map(x=>Number(x.q).toFixed(2).replace('.',',')+' ('+money(x.stake)+')').join(' · ');}
 function renderReport(){document.getElementById('report').innerHTML=data.trades.map(t=>`<tr><td>${t.no}</td><td>${t.weekend}</td><td><b>${esc(t.stakeName)}</b></td><td>${esc(t.match)}</td><td>${esc(t.matchClass||'—')}</td><td>${money(t.stakeValue)}</td><td>${icon(t.result)} ${t.result}</td><td>${esc(stepsLabel(t))}</td><td class="${t.pl>=0?'positive':'negative'}">${t.pl>=0?'+':''}${money(t.pl)}</td></tr>`).join('');}
-function allTradeRecords(){const out=[];(data.weekends||[]).forEach(w=>{if(Array.isArray(w.trades))out.push(...w.trades)});if(Array.isArray(data.trades))out.push(...data.trades);return out;}
-function renderStats(){const ts=allTradeRecords().filter(t=>['WIN','LOSS','NULLA'].includes(t.result)),wins=ts.filter(t=>t.result==='WIN').length,nulls=ts.filter(t=>t.result==='NULLA').length,losses=ts.filter(t=>t.result==='LOSS').length,rate=ts.length?(wins+nulls)/ts.length*100:0;document.getElementById('totalTrades').textContent=ts.length;document.getElementById('totalWins').textContent=wins;document.getElementById('totalNulls').textContent=nulls;document.getElementById('totalLosses').textContent=losses;document.getElementById('winNullRate').textContent=rate.toFixed(1).replace('.',',')+'%';}
-function renderHistory(){let a=[...(data.weekends||[])],cur=data.trades.filter(t=>t.weekend===data.weekendNo);if(cur.length||!a.length)a.push({no:data.weekendNo,trades:cur,start:data.weekendStart,budgetEnd:data.budget});document.getElementById('weekendHistory').innerHTML=a.map(w=>{const p=(w.budgetEnd??w.start)-w.start;return `<div style="padding:8px 0;border-bottom:1px solid #eee"><b>Weekend ${w.no}</b> · ${w.trades.length} registrazioni · P/L <span class="${p>=0?'positive':'negative'}">${p>=0?'+':''}${money(p)}</span></div>`}).join('');}
+function renderHistory(){let a=[...(data.weekends||[])],cur=data.trades.filter(t=>t.weekend===data.weekendNo);if(cur.length||!a.length)a.push({no:data.weekendNo,trades:cur,start:data.weekendStart,budgetEnd:data.budget});document.getElementById('weekendHistory').innerHTML=a.map(w=>{const p=(w.budgetEnd??w.start)-w.start;return `<div style="padding:8px 0;border-bottom:1px solid #eee"><b>Weekend ${w.no}</b> · ${w.trades.length} registrazioni · P/L <span class="${p>=0?'positive':'negative'}">${p>=0?'+':''}${money(p)}</span></div>`;}).join('');}
 function render(){
- document.getElementById('initial').textContent=money(data.initialBudget);document.getElementById('budget').textContent=money(data.budget);document.getElementById('withdrawn').textContent=money(data.withdrawn);
- const p=data.budget-data.initialBudget+data.withdrawn,pel=document.getElementById('profit');pel.textContent=(p>=0?'+':'')+money(p);pel.className='value '+(p>=0?'positive':'negative');document.getElementById('weekend').textContent=data.weekendNo;
- renderSelect();renderStakes();renderReport();renderHistory();renderStats();showMatchInfo();drawChart();
- const s=selectedStakeObj(),g=s&&s.status==='group'?data.groups.find(x=>x.id===s.groupId&&x.active):null;
- document.getElementById('selectedStake').textContent=s?s.name+' · '+money(s.value):'—';document.getElementById('mode').innerHTML=g?'<b>🟠 RECUPERO</b>':'<b>🟢 NORMALE</b>';document.getElementById('modeCard').className='card '+(g?'recovery':'normal');document.getElementById('detail').textContent=g?'Recupero attivo. La ladder resta determinata dalla classe della partita.':'Seleziona partita e stake.';
+ document.getElementById('initial').textContent=money(data.initialBudget);document.getElementById('budget').textContent=money(data.budget);document.getElementById('withdrawn').textContent=money(data.withdrawn);const p=data.budget-data.initialBudget+data.withdrawn;const pel=document.getElementById('profit');pel.textContent=(p>=0?'+':'')+money(p);pel.className='value '+(p>=0?'positive':'negative');document.getElementById('weekend').textContent=data.weekendNo;
+ renderSelect();renderStakes();renderReport();renderHistory();renderStats();showMatchInfo();drawChart();updateLadder();
+ const s=active().find(x=>x.id===document.getElementById('stakeSelect').value),g=s&&s.status==='group'?data.groups.find(x=>x.id===s.groupId&&x.active):null;document.getElementById('selectedStake').textContent=s?s.name+' · '+money(s.value):'—';document.getElementById('mode').innerHTML=g?'<b>🟠 RECUPERO</b>':'<b>🟢 NORMALE</b>';document.getElementById('modeCard').className='card '+(g?'recovery':'normal');document.getElementById('detail').textContent=g?'Recupero attivo. Al completamento verranno riattivati tutti gli stake originali.':'Seleziona partita e stake.';
 }
 function addRecord(name,match,value,result,pl,extra={}){data.trades.push({no:data.trades.length+1,weekend:data.weekendNo,stakeName:name,match,stakeValue:value,result,pl,time:new Date().toISOString(),...extra});}
 function done(m){const k=matchKey(m);if(!data.completedMatches.includes(k))data.completedMatches.push(k);}
 function doneKey(k){if(!data.completedMatches.includes(k))data.completedMatches.push(k);}
 function keyToMatch(k){return String(k).split('|').pop()||'Partita';}
 function cashPoint(label){data.cashHistory=data.cashHistory||[];data.cashHistory.push({label,cash:data.budget});if(data.cashHistory.length>100)data.cashHistory=data.cashHistory.slice(-100);}
-function snapshot(){const d=JSON.parse(JSON.stringify(data));delete d.undoStack;return d;}
-function pushUndo(){data.undoStack=data.undoStack||[];data.undoStack.push(snapshot());if(data.undoStack.length>30)data.undoStack.shift();}
-function finish(message){save();render();renderMatches();document.getElementById('fusionBox').classList.add('hidden');clearMatched();msg(message);}
-
+function snapshot(){return JSON.parse(JSON.stringify(data));}
+function finish(snap,message){data.undoSnapshot=snap;save();render();document.getElementById('fusionBox').classList.add('hidden');clearMatched();msg(message);}
 function record(result){
- const s=selectedStakeObj(),m=selectedMatch();if(!s){alert('Seleziona uno stake.');return;}if(!m){alert('Seleziona una partita.');return;}
+ const s=active().find(x=>x.id===document.getElementById('stakeSelect').value),m=selectedMatch();
+ if(!s){alert('Seleziona uno stake.');return;} if(!m){alert('Seleziona una partita.');return;}
  const mi=matchedInfo(),g=s.status==='group'?data.groups.find(x=>x.id===s.groupId&&x.active):null;
  if(result==='NULLA'&&mi.steps.length){if(!confirm('Hai selezionato gradini abbinati ma stai registrando NULLA. Continuare?'))return;}
  if(result==='WIN'&&!mi.steps.length){alert('Per una WIN seleziona almeno un gradino effettivamente abbinato.');return;}
  if(g){groupTrade(result,g,m,mi);return;}
  if(result==='LOSS'){showFusion(s,m,mi);return;}
- pushUndo();const before=s.value;let pl=0;
- if(result==='WIN'){pl=Math.round(mi.net*100)/100;s.value=Math.round((s.value+pl)*100)/100;s.pl=Math.round(((s.pl||0)+pl)*100)/100;data.budget=Math.round((data.budget+pl)*100)/100;}
+ const snap=snapshot(),before=s.value;
+ let pl=0;
+ if(result==='WIN'){
+   pl=Math.round(mi.net*100)/100;
+   s.value=Math.round((s.value+pl)*100)/100;
+   s.pl=Math.round(((s.pl||0)+pl)*100)/100;
+   data.budget=Math.round((data.budget+pl)*100)/100;
+ }
  s.trades++;
  addRecord(s.name,matchName(m),before,result,pl,{matchClass:matchClass(m),matchedSteps:mi.steps.map(x=>({q:x.q,stake:x.v})),matchedStake:mi.stake,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22',commission:COMM});
- done(m);cashPoint(matchName(m));finish('Registrazione salvata.');
+ done(m);cashPoint(matchName(m));finish(snap,'Registrazione salvata.');
 }
 function showFusion(loser,m,mi){
  const box=document.getElementById('fusionBox');box.classList.remove('hidden');const c=active().filter(s=>s.id!==loser.id&&s.status==='active');
@@ -244,42 +252,67 @@ function showFusion(loser,m,mi){
  document.getElementById('confirmFusionBtn').addEventListener('click',()=>confirmFusion(loser.id,matchKey(m),mi,actualLoss,matchClass(m)));
 }
 function confirmFusion(loserId,mkey,mi,actualLoss,mclass){
- const loser=data.stakes.find(s=>s.id===loserId),ids=[...document.querySelectorAll('#checks input:checked')].map(x=>x.value);if(!loser||!ids.length){alert('Seleziona almeno uno stake.');return;}
- const selected=data.stakes.filter(s=>ids.includes(s.id));if(selected.length!==ids.length){alert('Selezione non valida.');return;}pushUndo();
- const members=[loserId,...ids],survivorTotal=roundEuro(selected.reduce((a,s)=>a+s.value,0)),target=roundEuro(survivorTotal+actualLoss),name=members.join('-');
- data.stakes.filter(s=>members.includes(s.id)).forEach(s=>s.status='fused');
- const g={id:'G'+Date.now(),name:'Stake '+name,members,value:survivorTotal,target,originalValues:data.stakes.filter(s=>members.includes(s.id)).map(s=>({id:s.id,value:s.value})),lossValue:actualLoss,active:true,trades:0,pl:0,ruleVersion:'V7'};
- data.groups.push(g);data.stakes.push({id:g.id,name:g.name,value:g.value,status:'group',trades:0,pl:0,groupId:g.id});
+ const snap=snapshot(),loser=data.stakes.find(s=>s.id===loserId),ids=[...document.querySelectorAll('#checks input:checked')].map(x=>x.value);
+ if(!loser||!ids.length){alert('Seleziona almeno uno stake.');return;}
+ const members=[loserId,...ids],selected=data.stakes.filter(s=>ids.includes(s.id));
+ if(selected.length!==ids.length){alert('Selezione non valida.');return;}
+ const survivorTotal=roundEuro(selected.reduce((a,s)=>a+s.value,0));
+ const target=roundEuro(survivorTotal+actualLoss);
+ const name=members.join('-');
+ [...data.stakes.filter(s=>members.includes(s.id))].forEach(s=>s.status='fused');
+ const g={id:'G'+Date.now(),name:'Stake '+name,members,value:survivorTotal,target,originalValues:data.stakes.filter(s=>members.includes(s.id)).map(s=>({id:s.id,value:s.value})),lossValue:roundEuro(actualLoss),active:true,trades:0,pl:0,ruleVersion:'V7'};
+ data.groups.push(g);
+ data.stakes.push({id:g.id,name:g.name,value:g.value,status:'group',trades:0,pl:0,groupId:g.id});
  data.budget=Math.round((data.budget-actualLoss)*100)/100;
- addRecord(loser.name,keyToMatch(mkey),loser.value,'LOSS',-actualLoss,{matchClass:mclass,matchedSteps:mi.steps.map(x=>({q:x.q,stake:x.v})),matchedStake:mi.stake,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22'});
- addRecord(g.name,keyToMatch(mkey),g.value,'FUSIONE',0,{members,target,lossValue:actualLoss});doneKey(mkey);cashPoint(keyToMatch(mkey));finish('LOSS registrata. Recupero creato.');
+ addRecord(loser.name,keyToMatch(mkey),loser.value,'LOSS',-actualLoss,{members,matchClass:mclass,matchedSteps:mi.steps.map(x=>({q:x.q,stake:x.v})),matchedStake:mi.stake,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22'});
+ addRecord(g.name,keyToMatch(mkey),g.value,'FUSIONE',0,{members,target,lossValue:actualLoss});
+ doneKey(mkey);finish(snap,'LOSS registrata. Recupero creato: '+money(g.value)+' da portare a '+money(g.target)+'.');
 }
 function groupTrade(result,g,m,mi){
- if(result==='LOSS'){const gs=data.stakes.find(s=>s.id===g.id);showFusion(gs,m,mi);return;}
- pushUndo();const gs=data.stakes.find(s=>s.id===g.id),before=g.value;let pl=0;
- if(result==='WIN'){pl=Math.round(mi.net*100)/100;g.value=Math.round((g.value+pl)*100)/100;g.pl=Math.round(((g.pl||0)+pl)*100)/100;data.budget=Math.round((data.budget+pl)*100)/100;gs.value=g.value;}
- g.trades++;addRecord(g.name,matchName(m),before,result,pl,{matchClass:matchClass(m),matchedSteps:mi.steps.map(x=>({q:x.q,stake:x.v})),matchedStake:mi.stake,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22'});done(m);
- if(result==='WIN'&&g.value>=g.target){const splitValue=g.target,share=roundEuro(splitValue/g.members.length);g.members.forEach(id=>{const s=data.stakes.find(x=>x.id===id);if(s){s.status='active';s.value=share;s.trades=0;s.pl=0;}});gs.status='fused';g.active=false;addRecord('SPLIT '+g.name,matchName(m),splitValue,'SPLIT',0,{members:g.members});}
- cashPoint(matchName(m));finish(g.active?'Registrazione salvata.':'Recupero completato e split eseguito.');
+ if(result==='LOSS'){showGroupLoss(g,m,mi);return;}
+ const snap=snapshot(),gs=data.stakes.find(s=>s.id===g.id),before=g.value;
+ let pl=0;
+ if(result==='WIN'){
+   if(!mi.steps.length){alert('Per una WIN seleziona almeno un gradino effettivamente abbinato.');return;}
+   pl=Math.round(mi.net*100)/100;
+   g.value=Math.round((g.value+pl)*100)/100;g.pl=Math.round(((g.pl||0)+pl)*100)/100;data.budget=Math.round((data.budget+pl)*100)/100;gs.value=g.value;
+ }
+ g.trades++;
+ addRecord(g.name,matchName(m),before,result,pl,{matchClass:matchClass(m),matchedSteps:mi.steps.map(x=>({q:x.q,stake:x.v})),matchedStake:mi.stake,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22'});
+ done(m);
+ if(result==='WIN'&&g.value>=g.target){
+   const splitValue=g.target;const share=roundEuro(splitValue/g.members.length);g.value=splitValue;gs.value=splitValue;
+   g.members.forEach(id=>{const s=data.stakes.find(x=>x.id===id);if(s){s.status='active';s.value=share;s.trades=0;s.pl=0;}});
+   gs.status='fused';g.active=false;addRecord('SPLIT '+g.name,matchName(m),splitValue,'SPLIT',0,{members:g.members,overshoot:0});
+ }
+ cashPoint(matchName(m));finish(snap,g.active?'Registrazione salvata.':'Recupero completato e split eseguito.');
 }
-function withdraw(){let v=prompt('Importo da prelevare dalla cassa?','10');if(v===null)return;v=Math.round(Number(String(v).replace(',','.')));if(!Number.isFinite(v)||v<=0){alert('Inserisci un importo valido.');return;}if(v>data.budget){alert('Non puoi prelevare più della cassa disponibile.');return;}pushUndo();data.budget-=v;data.withdrawn+=v;addRecord('CASSA','Prelievo',v,'PRELIEVO',-v);cashPoint('Prelievo -'+money(v));finish('Prelievo registrato.');}
-function undo(){if(!data.undoStack||!data.undoStack.length){alert('Non ci sono altre registrazioni da annullare.');return;}const prev=data.undoStack.pop(),remaining=data.undoStack;data=normalize(prev);data.undoStack=remaining;save();render();loadMatches();msg('Ultima registrazione annullata.');}
-function newWeekend(){if(!confirm('Chiudere il weekend e iniziarne uno nuovo?'))return;pushUndo();data.weekends.push({no:data.weekendNo,trades:data.trades,start:data.weekendStart,budgetEnd:data.budget});data.weekendNo++;data.weekendStart=data.budget;data.trades=[];finish('Nuovo weekend iniziato.');}
-function backup(){const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='over05-backup-v7.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
-function restore(e){const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=normalize(JSON.parse(r.result));if(!confirm('Ripristinare questo backup?'))return;data=d;save();render();loadMatches();alert('Backup ripristinato correttamente.');}catch(x){alert('Backup non valido.');}e.target.value='';};r.readAsText(f);}
-function resetAll(){if(confirm('Cancellare tutto e tornare a €100?')){data=fresh();save();render();loadMatches();}}
+function showGroupLoss(g,m,mi){const box=document.getElementById('fusionBox');box.classList.remove('hidden');const c=active().filter(s=>s.status==='active');box.innerHTML=`<b>${esc(g.name)} = LOSS durante il recupero.</b><div class="muted" style="margin:6px 0">Seleziona esattamente 4 stake da aggiungere alla nuova fusione.</div><div id="checks">${c.map(s=>`<label class="check"><input type="checkbox" value="${escAttr(s.id)}">${esc(s.name)} — ${money(s.value)}</label>`).join('')}</div><button type="button" id="confirmGroupLossBtn">Fondi 4 stake</button>`;document.getElementById('confirmGroupLossBtn').addEventListener('click',()=>confirmGroupLoss(g.id,matchKey(m),mi,matchClass(m)));}
+function confirmGroupLoss(gid,mkey,mi,mclass){
+ const snap=snapshot(),g=data.groups.find(x=>x.id===gid&&x.active),ids=[...document.querySelectorAll('#checks input:checked')].map(x=>x.value);
+ if(!g||ids.length!==4){alert('Seleziona esattamente 4 stake.');return;}
+ const members=[...g.members,...ids],ms=data.stakes.filter(s=>ids.includes(s.id));
+ if(ms.length!==4){alert('Selezione non valida.');return;}
+ const total=roundEuro(g.value+ms.reduce((a,s)=>a+s.value,0));
+ ms.forEach(s=>s.status='fused');const old=data.stakes.find(s=>s.id===g.id);if(old)old.status='fused';g.active=false;
+ const ng={id:'G'+Date.now(),name:'Stake '+members.join('-'),members,value:total,target:total,originalValues:ms.map(s=>({id:s.id,value:s.value})),active:true,trades:0,pl:0,previousGroup:gid};
+ data.groups.push(ng);data.stakes.push({id:ng.id,name:ng.name,value:ng.value,status:'group',trades:0,pl:0,groupId:ng.id});
+ data.budget-=g.value;
+ const actualLoss=mi&&mi.stake>0?mi.stake:g.value;data.budget+=g.value;data.budget-=actualLoss;addRecord(g.name,keyToMatch(mkey),g.value,'LOSS',-actualLoss,{members:g.members,previousGroup:gid,matchClass:mclass,matchedSteps:mi&&mi.steps?mi.steps.map(x=>({q:x.q,stake:x.v})):[],matchedStake:mi?mi.stake:0,ladderVersion:'REV4-V7-CLASS-1.07-1.11-1.22'});
+ addRecord(ng.name,keyToMatch(mkey),ng.value,'FUSIONE',0,{members,previousGroup:gid});doneKey(mkey);finish(snap,'LOSS registrata. Nuova fusione creata.');
+}
+function withdraw(){let v=prompt('Importo da prelevare dalla cassa?','10');if(v===null)return;v=Math.round(Number(String(v).replace(',','.')));if(!Number.isFinite(v)||v<=0){alert('Inserisci un importo valido.');return;}if(v>data.budget){alert('Non puoi prelevare più della cassa disponibile.');return;}const snap=snapshot();data.budget-=v;data.withdrawn+=v;addRecord('CASSA','Prelievo',v,'PRELIEVO',-v);cashPoint('Prelievo -'+money(v));finish(snap,'Prelievo registrato.');}
+function undo(){if(!data.undoSnapshot){alert('Non c’è una registrazione da annullare.');return;}data=normalize(JSON.parse(JSON.stringify(data.undoSnapshot)));delete data.undoSnapshot;save();render();loadMatches();msg('Ultima registrazione annullata.');}
+function drawChart(){const c=document.getElementById('cashChart');if(!c)return;const d=data.cashHistory&&data.cashHistory.length?data.cashHistory:[{label:'Inizio',cash:data.budget}],w=Math.max(300,c.clientWidth||800),h=260,ratio=window.devicePixelRatio||1;c.width=w*ratio;c.height=h*ratio;const ctx=c.getContext('2d');ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,w,h);let vals=d.map(x=>Number(x.cash)||0),min=Math.min(...vals),max=Math.max(...vals);if(min===max){min-=5;max+=5;}const pad=38,range=max-min,step=(w-2*pad)/Math.max(1,d.length-1);ctx.font='11px Arial';ctx.strokeStyle='#d1d5db';ctx.fillStyle='#6b7280';for(let i=0;i<5;i++){const y=pad+(h-2*pad)*i/4,val=max-range*i/4;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();ctx.fillText(money(val),3,y+4);}ctx.beginPath();d.forEach((p,i)=>{const x=pad+step*i,y=pad+(h-2*pad)*(max-(Number(p.cash)||0))/range;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.strokeStyle='#111827';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#111827';d.forEach((p,i)=>{const x=pad+step*i,y=pad+(h-2*pad)*(max-(Number(p.cash)||0))/range;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();});}
 function msg(t){document.getElementById('message').innerHTML='<div class="toast">'+esc(t)+'</div>';}
-function drawChart(){
- const c=document.getElementById('cashChart');if(!c)return;const d=data.cashHistory&&data.cashHistory.length?data.cashHistory:[{label:'Inizio',cash:data.budget}],w=Math.max(300,c.clientWidth||800),h=260,ratio=window.devicePixelRatio||1;c.width=w*ratio;c.height=h*ratio;
- const ctx=c.getContext('2d');ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,w,h);let vals=d.map(x=>Number(x.cash)||0),min=Math.min(...vals),max=Math.max(...vals);if(min===max){min-=5;max+=5;}
- const pad=38,range=max-min,step=(w-2*pad)/Math.max(1,d.length-1);ctx.font='11px Arial';ctx.strokeStyle='#d1d5db';ctx.fillStyle='#6b7280';
- for(let i=0;i<5;i++){const y=pad+(h-2*pad)*i/4,val=max-range*i/4;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();ctx.fillText(money(val),3,y+4);}
- ctx.beginPath();d.forEach((p,i)=>{const x=pad+step*i,y=pad+(h-2*pad)*(max-(Number(p.cash)||0))/range;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.strokeStyle='#111827';ctx.lineWidth=2;ctx.stroke();
-}
+function newWeekend(){if(!confirm('Chiudere il weekend e iniziarne uno nuovo?'))return;data.weekends.push({no:data.weekendNo,trades:data.trades,start:data.weekendStart,budgetEnd:data.budget});data.weekendNo++;data.weekendStart=data.budget;data.trades=[];save();render();msg('Nuovo weekend iniziato.');}
+function backup(){const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='over05-backup-v7.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function restore(e){const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=normalize(JSON.parse(r.result));if(!confirm('Ripristinare questo backup? I dati attuali verranno sostituiti.'))return;data=d;delete data.undoSnapshot;save();render();loadMatches();alert('Backup ripristinato correttamente.');}catch(x){alert('Backup non valido.');}e.target.value='';};r.readAsText(f);}
+function resetAll(){if(confirm('Cancellare tutto e tornare a €100?')){data=fresh();save();render();loadMatches();}}
 
 document.getElementById('matchSelect').addEventListener('change',showMatchInfo);
-document.getElementById('stakeSelect').addEventListener('change',()=>{clearMatched();render();});
 ['m107','m111','m122'].forEach(id=>document.getElementById(id).addEventListener('change',updateMatchedPreview));
+document.getElementById('stakeSelect').addEventListener('change',()=>{clearMatched();render();});
 document.getElementById('winBtn').addEventListener('click',()=>record('WIN'));
 document.getElementById('lossBtn').addEventListener('click',()=>record('LOSS'));
 document.getElementById('nullBtn').addEventListener('click',()=>record('NULLA'));
@@ -292,6 +325,5 @@ document.getElementById('file').addEventListener('change',restore);
 document.getElementById('resetBtn').addEventListener('click',resetAll);
 window.addEventListener('resize',drawChart);
 render();loadMatches();
-if('serviceWorker' in navigator&&location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
-</script>
-</body></html>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+</script></body></html>
