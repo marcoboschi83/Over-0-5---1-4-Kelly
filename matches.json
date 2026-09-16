@@ -1,5 +1,6 @@
 [
   {
+    "id": "laliga-2026-09-15-rayo-espanyol",
     "league": "La Liga",
     "date": "2026-09-15",
     "time": "19:00",
@@ -12,9 +13,10 @@
     "stake_pct": 15,
     "net_win_pct": 10,
     "odds_snapshot_o05": "1.04-1.06",
-    "note": "Classe B. Step 2 CLEAN. Controllo Step 3.3/3.4 previsto 1h prima del kickoff."
+    "note": "Classe B. Step 2 CLEAN."
   },
   {
+    "id": "laliga-2026-09-15-elche-real-madrid",
     "league": "La Liga",
     "date": "2026-09-15",
     "time": "21:30",
@@ -27,6 +29,6 @@
     "stake_pct": 15,
     "net_win_pct": 10,
     "odds_snapshot_o05": "1.01-1.02",
-    "note": "Declassata a B per scarsa tradability: quota O0.5 iniziale molto bassa e ingresso tardivo. Controllo Step 3.3/3.4 previsto 1h prima del kickoff."
+    "note": "Classe B per scarsa tradability: quota O0.5 iniziale molto bassa."
   }
 ]
