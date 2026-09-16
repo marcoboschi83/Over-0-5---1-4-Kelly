@@ -9,9 +9,9 @@ Tracker statico per GitHub Pages.
 - `matches.json` — partite qualificate e classificazione
 
 ## Logica bankroll
-- A+ = 20% della cassa corrente
-- A = 15%
-- B = 10%
+- A+ = 30% della cassa corrente
+- A = 20%
+- B = 15%
 - C = NO TRADE
 - Stake arrotondato all'euro
 - WIN = +10% netto dello stake
