@@ -1,58 +1,18 @@
 [
   {
-    "id": "laliga-2026-09-16-atletico-osasuna",
+    "id": "laliga-2026-09-17-malaga-villarreal",
     "league": "La Liga",
-    "date": "2026-09-16",
-    "time": "19:00",
-    "home": "Atletico Madrid",
-    "away": "Osasuna",
-    "match": "Atletico Madrid - Osasuna",
-    "step1_pct": 94.14,
-    "step2": "CLEAN",
-    "class": "B",
-    "stake_pct": 15,
-    "net_win_pct": 10
-  },
-  {
-    "id": "laliga-2026-09-16-deportivo-sevilla",
-    "league": "La Liga",
-    "date": "2026-09-16",
-    "time": "19:00",
-    "home": "Deportivo La Coruna",
-    "away": "Sevilla",
-    "match": "Deportivo La Coruna - Sevilla",
-    "step1_pct": 94.12,
-    "step2": "CLEAN",
-    "class": "A",
-    "stake_pct": 20,
-    "net_win_pct": 10
-  },
-  {
-    "id": "laliga-2026-09-16-barcelona-racing",
-    "league": "La Liga",
-    "date": "2026-09-16",
+    "date": "2026-09-17",
     "time": "21:30",
-    "home": "Barcelona",
-    "away": "Racing Santander",
-    "match": "Barcelona - Racing Santander",
-    "step1_pct": 98.47,
-    "step2": "CLEAN",
+    "home": "Malaga",
+    "away": "Villarreal",
+    "match": "Malaga - Villarreal",
+    "step1_pct": 92.88,
+    "step2": "ALERT leggero",
     "class": "B",
     "stake_pct": 15,
-    "net_win_pct": 10
-  },
-  {
-    "id": "laliga-2026-09-16-levante-athletic",
-    "league": "La Liga",
-    "date": "2026-09-16",
-    "time": "21:30",
-    "home": "Levante",
-    "away": "Athletic Club",
-    "match": "Levante - Athletic Club",
-    "step1_pct": 94.12,
-    "step2": "CLEAN",
-    "class": "B",
-    "stake_pct": 15,
-    "net_win_pct": 10
+    "net_win_pct": 10,
+    "odds_snapshot_o05": "1.02-1.04",
+    "note": "Classe provvisoria B. Step 3.1 WATCH, Step 3.2 WATCH. In attesa dello Step 3.3 e 3.4 con formazioni ufficiali."
   }
 ]
