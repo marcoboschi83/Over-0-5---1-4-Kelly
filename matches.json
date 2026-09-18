@@ -1,18 +1,44 @@
-[
-  {
-    "id": "laliga-2026-09-17-malaga-villarreal",
-    "league": "La Liga",
-    "date": "2026-09-17",
-    "time": "21:30",
-    "home": "Malaga",
-    "away": "Villarreal",
-    "match": "Malaga - Villarreal",
-    "step1_pct": 92.88,
-    "step2": "ALERT leggero",
-    "class": "B",
-    "stake_pct": 15,
-    "net_win_pct": 10,
-    "odds_snapshot_o05": "1.02-1.04",
-    "note": "Classe provvisoria B. Step 3.1 WATCH, Step 3.2 WATCH. In attesa dello Step 3.3 e 3.4 con formazioni ufficiali."
-  }
-]
+{
+  "matches": [
+    {
+      "id": "2026-09-18-monaco-lens",
+      "league": "Ligue 1",
+      "home": "Monaco",
+      "away": "Lens",
+      "date": "2026-09-18",
+      "time": "20:45",
+      "class": "B",
+      "stake_pct": 10
+    },
+    {
+      "id": "2026-09-18-monza-sassuolo",
+      "league": "Serie A",
+      "home": "Monza",
+      "away": "Sassuolo",
+      "date": "2026-09-18",
+      "time": "20:45",
+      "class": "A",
+      "stake_pct": 15
+    },
+    {
+      "id": "2026-09-18-brentford-chelsea",
+      "league": "Premier League",
+      "home": "Brentford",
+      "away": "Chelsea",
+      "date": "2026-09-18",
+      "time": "21:00",
+      "class": "A+",
+      "stake_pct": 20
+    },
+    {
+      "id": "2026-09-18-espanyol-elche",
+      "league": "LaLiga",
+      "home": "Espanyol",
+      "away": "Elche",
+      "date": "2026-09-18",
+      "time": "21:00",
+      "class": "B",
+      "stake_pct": 10
+    }
+  ]
+}
