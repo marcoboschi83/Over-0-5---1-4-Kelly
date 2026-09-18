@@ -1,44 +1,66 @@
-{
-  "matches": [
-    {
-      "id": "2026-09-18-monaco-lens",
-      "league": "Ligue 1",
-      "home": "Monaco",
-      "away": "Lens",
-      "date": "2026-09-18",
-      "time": "20:45",
-      "class": "C",
-      "stake_pct": 5
-    },
-    {
-      "id": "2026-09-18-monza-sassuolo",
-      "league": "Serie A",
-      "home": "Monza",
-      "away": "Sassuolo",
-      "date": "2026-09-18",
-      "time": "20:45",
-      "class": "A",
-      "stake_pct": 15
-    },
-    {
-      "id": "2026-09-18-brentford-chelsea",
-      "league": "Premier League",
-      "home": "Brentford",
-      "away": "Chelsea",
-      "date": "2026-09-18",
-      "time": "21:00",
-      "class": "A",
-      "stake_pct": 15
-    },
-    {
-      "id": "2026-09-18-espanyol-elche",
-      "league": "LaLiga",
-      "home": "Espanyol",
-      "away": "Elche",
-      "date": "2026-09-18",
-      "time": "21:00",
-      "class": "B",
-      "stake_pct": 10
-    }
-  ]
-}
+[
+  {
+    "id": "ligue1-2026-09-18-monaco-lens",
+    "league": "Ligue 1",
+    "date": "2026-09-18",
+    "time": "20:45",
+    "home": "Monaco",
+    "away": "Lens",
+    "match": "Monaco - Lens",
+    "step1_pct": 96.8,
+    "step2": "CLEAN",
+    "class": "C",
+    "stake_pct": 5,
+    "net_win_pct": null,
+    "odds_snapshot_o05": null,
+    "note": "REV04 finale: PRE-REJECT; downgrade B→C dopo Step 3.3/3.4."
+  },
+  {
+    "id": "seriea-2026-09-18-monza-sassuolo",
+    "league": "Serie A",
+    "date": "2026-09-18",
+    "time": "20:45",
+    "home": "Monza",
+    "away": "Sassuolo",
+    "match": "Monza - Sassuolo",
+    "step1_pct": 96.62,
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 15,
+    "net_win_pct": null,
+    "odds_snapshot_o05": null,
+    "note": "REV04 finale: PASS."
+  },
+  {
+    "id": "premier-2026-09-18-brentford-chelsea",
+    "league": "Premier League",
+    "date": "2026-09-18",
+    "time": "21:00",
+    "home": "Brentford",
+    "away": "Chelsea",
+    "match": "Brentford - Chelsea",
+    "step1_pct": 97.8,
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 15,
+    "net_win_pct": null,
+    "odds_snapshot_o05": null,
+    "note": "REV04 finale: PASS; downgrade A+→A dopo Step 3.3/3.4."
+  },
+  {
+    "id": "laliga-2026-09-18-espanyol-elche",
+    "league": "La Liga",
+    "date": "2026-09-18",
+    "time": "21:00",
+    "home": "Espanyol",
+    "away": "Elche",
+    "match": "Espanyol - Elche",
+    "step1_pct": 96.58,
+    "step2": "CLEAN",
+    "class": "B",
+    "stake_pct": 10,
+    "net_win_pct": null,
+    "odds_snapshot_o05": null,
+    "note": "REV04 finale: WATCH."
+  }
+]
