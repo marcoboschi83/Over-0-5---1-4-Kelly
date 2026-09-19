@@ -1,66 +1,146 @@
 [
   {
-    "id": "ligue1-2026-09-18-monaco-lens",
-    "league": "Ligue 1",
-    "date": "2026-09-18",
-    "time": "20:45",
-    "home": "Monaco",
-    "away": "Lens",
-    "match": "Monaco - Lens",
-    "step1_pct": 96.8,
-    "step2": "CLEAN",
-    "class": "C",
-    "stake_pct": 5,
-    "net_win_pct": null,
-    "odds_snapshot_o05": null,
-    "note": "REV04 finale: PRE-REJECT; downgrade B→C dopo Step 3.3/3.4."
-  },
-  {
-    "id": "seriea-2026-09-18-monza-sassuolo",
-    "league": "Serie A",
-    "date": "2026-09-18",
-    "time": "20:45",
-    "home": "Monza",
-    "away": "Sassuolo",
-    "match": "Monza - Sassuolo",
-    "step1_pct": 96.62,
-    "step2": "CLEAN",
-    "class": "A",
-    "stake_pct": 15,
-    "net_win_pct": null,
-    "odds_snapshot_o05": null,
-    "note": "REV04 finale: PASS."
-  },
-  {
-    "id": "premier-2026-09-18-brentford-chelsea",
+    "match": "Tottenham - Aston Villa",
+    "date": "2026-09-19",
+    "time": "13:30",
     "league": "Premier League",
-    "date": "2026-09-18",
-    "time": "21:00",
-    "home": "Brentford",
-    "away": "Chelsea",
-    "match": "Brentford - Chelsea",
-    "step1_pct": 97.8,
-    "step2": "CLEAN",
-    "class": "A",
-    "stake_pct": 15,
-    "net_win_pct": null,
-    "odds_snapshot_o05": null,
-    "note": "REV04 finale: PASS; downgrade A+→A dopo Step 3.3/3.4."
+    "step1_pct": 95.02,
+    "step2": "ALERT"
   },
   {
-    "id": "laliga-2026-09-18-espanyol-elche",
+    "match": "Osasuna - Rayo Vallecano",
+    "date": "2026-09-19",
+    "time": "14:00",
     "league": "La Liga",
-    "date": "2026-09-18",
+    "step1_pct": 95.94,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Bologna - Torino",
+    "date": "2026-09-19",
+    "time": "15:00",
+    "league": "Serie A",
+    "step1_pct": 94.09,
+    "step2": "ALERT leggero"
+  },
+  {
+    "match": "Udinese - Cagliari",
+    "date": "2026-09-19",
+    "time": "15:00",
+    "league": "Serie A",
+    "step1_pct": 96.54,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Brighton - Arsenal",
+    "date": "2026-09-19",
+    "time": "16:00",
+    "league": "Premier League",
+    "step1_pct": 97.55,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Everton - Ipswich",
+    "date": "2026-09-19",
+    "time": "16:00",
+    "league": "Premier League",
+    "step1_pct": 95.93,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Newcastle - Hull",
+    "date": "2026-09-19",
+    "time": "16:00",
+    "league": "Premier League",
+    "step1_pct": 94.16,
+    "step2": "ALERT leggero"
+  },
+  {
+    "match": "Athletic - Alaves",
+    "date": "2026-09-19",
+    "time": "16:15",
+    "league": "La Liga",
+    "step1_pct": 95.68,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Paris FC - Strasbourg",
+    "date": "2026-09-19",
+    "time": "17:15",
+    "league": "Ligue 1",
+    "step1_pct": 96.38,
+    "step2": "ALERT GDI"
+  },
+  {
+    "match": "Roma - Inter",
+    "date": "2026-09-19",
+    "time": "18:00",
+    "league": "Serie A",
+    "step1_pct": 98.73,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Celta - Racing Santander",
+    "date": "2026-09-19",
+    "time": "18:30",
+    "league": "La Liga",
+    "step1_pct": 95.31,
+    "step2": "ALERT"
+  },
+  {
+    "match": "Nottingham Forest - Coventry",
+    "date": "2026-09-19",
+    "time": "18:30",
+    "league": "Premier League",
+    "step1_pct": 94.38,
+    "step2": "ALERT"
+  },
+  {
+    "match": "Angers - Troyes",
+    "date": "2026-09-19",
+    "time": "20:45",
+    "league": "Ligue 1",
+    "step1_pct": 95.88,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Le Mans - Lorient",
+    "date": "2026-09-19",
+    "time": "20:45",
+    "league": "Ligue 1",
+    "step1_pct": 96.19,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Lyon - Rennes",
+    "date": "2026-09-19",
+    "time": "20:45",
+    "league": "Ligue 1",
+    "step1_pct": 96.52,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Toulouse - Le Havre",
+    "date": "2026-09-19",
+    "time": "20:45",
+    "league": "Ligue 1",
+    "step1_pct": 96.01,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Venezia - Lazio",
+    "date": "2026-09-19",
+    "time": "20:45",
+    "league": "Serie A",
+    "step1_pct": 97.87,
+    "step2": "CLEAN"
+  },
+  {
+    "match": "Sevilla - Barcelona",
+    "date": "2026-09-19",
     "time": "21:00",
-    "home": "Espanyol",
-    "away": "Elche",
-    "match": "Espanyol - Elche",
-    "step1_pct": 96.58,
-    "step2": "CLEAN",
-    "class": "B",
-    "stake_pct": 10,
-    "net_win_pct": null,
-    "odds_snapshot_o05": null,
-    "note": "REV04 finale: WATCH."
+    "league": "La Liga",
+    "step1_pct": 97.92,
+    "step2": "ALERT GDI"
   }
 ]
