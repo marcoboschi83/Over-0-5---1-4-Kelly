@@ -5,7 +5,9 @@
     "time": "13:30",
     "league": "Premier League",
     "step1_pct": 95.02,
-    "step2": "ALERT"
+    "step2": "ALERT",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Osasuna - Rayo Vallecano",
@@ -13,7 +15,9 @@
     "time": "14:00",
     "league": "La Liga",
     "step1_pct": 95.94,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Bologna - Torino",
@@ -21,7 +25,9 @@
     "time": "15:00",
     "league": "Serie A",
     "step1_pct": 94.09,
-    "step2": "ALERT leggero"
+    "step2": "ALERT leggero",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Udinese - Cagliari",
@@ -29,7 +35,9 @@
     "time": "15:00",
     "league": "Serie A",
     "step1_pct": 96.54,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Brighton - Arsenal",
@@ -37,7 +45,9 @@
     "time": "16:00",
     "league": "Premier League",
     "step1_pct": 97.55,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Everton - Ipswich",
@@ -45,7 +55,9 @@
     "time": "16:00",
     "league": "Premier League",
     "step1_pct": 95.93,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Newcastle - Hull",
@@ -53,7 +65,9 @@
     "time": "16:00",
     "league": "Premier League",
     "step1_pct": 94.16,
-    "step2": "ALERT leggero"
+    "step2": "ALERT leggero",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Athletic - Alaves",
@@ -61,7 +75,9 @@
     "time": "16:15",
     "league": "La Liga",
     "step1_pct": 95.68,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Paris FC - Strasbourg",
@@ -69,7 +85,9 @@
     "time": "17:15",
     "league": "Ligue 1",
     "step1_pct": 96.38,
-    "step2": "ALERT GDI"
+    "step2": "ALERT GDI",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Roma - Inter",
@@ -77,7 +95,9 @@
     "time": "18:00",
     "league": "Serie A",
     "step1_pct": 98.73,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A+",
+    "stake_pct": 30
   },
   {
     "match": "Celta - Racing Santander",
@@ -85,7 +105,9 @@
     "time": "18:30",
     "league": "La Liga",
     "step1_pct": 95.31,
-    "step2": "ALERT"
+    "step2": "ALERT",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Nottingham Forest - Coventry",
@@ -93,7 +115,9 @@
     "time": "18:30",
     "league": "Premier League",
     "step1_pct": 94.38,
-    "step2": "ALERT"
+    "step2": "ALERT",
+    "class": "B",
+    "stake_pct": 20
   },
   {
     "match": "Angers - Troyes",
@@ -101,7 +125,9 @@
     "time": "20:45",
     "league": "Ligue 1",
     "step1_pct": 95.88,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Le Mans - Lorient",
@@ -109,7 +135,9 @@
     "time": "20:45",
     "league": "Ligue 1",
     "step1_pct": 96.19,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Lyon - Rennes",
@@ -117,7 +145,9 @@
     "time": "20:45",
     "league": "Ligue 1",
     "step1_pct": 96.52,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Toulouse - Le Havre",
@@ -125,7 +155,9 @@
     "time": "20:45",
     "league": "Ligue 1",
     "step1_pct": 96.01,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Venezia - Lazio",
@@ -133,7 +165,9 @@
     "time": "20:45",
     "league": "Serie A",
     "step1_pct": 97.87,
-    "step2": "CLEAN"
+    "step2": "CLEAN",
+    "class": "A",
+    "stake_pct": 25
   },
   {
     "match": "Sevilla - Barcelona",
@@ -141,6 +175,8 @@
     "time": "21:00",
     "league": "La Liga",
     "step1_pct": 97.92,
-    "step2": "ALERT GDI"
+    "step2": "ALERT GDI",
+    "class": "B",
+    "stake_pct": 20
   }
 ]
