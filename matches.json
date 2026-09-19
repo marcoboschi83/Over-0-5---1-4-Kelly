@@ -1,6 +1,9 @@
 [
   {
+    "id": "tottenham-aston-villa-20260919",
     "match": "Tottenham - Aston Villa",
+    "home": "Tottenham",
+    "away": "Aston Villa",
     "date": "2026-09-19",
     "time": "13:30",
     "league": "Premier League",
@@ -10,7 +13,10 @@
     "stake_pct": 20
   },
   {
+    "id": "osasuna-rayo-20260919",
     "match": "Osasuna - Rayo Vallecano",
+    "home": "Osasuna",
+    "away": "Rayo Vallecano",
     "date": "2026-09-19",
     "time": "14:00",
     "league": "La Liga",
@@ -20,7 +26,10 @@
     "stake_pct": 25
   },
   {
+    "id": "bologna-torino-20260919",
     "match": "Bologna - Torino",
+    "home": "Bologna",
+    "away": "Torino",
     "date": "2026-09-19",
     "time": "15:00",
     "league": "Serie A",
@@ -30,7 +39,10 @@
     "stake_pct": 20
   },
   {
+    "id": "udinese-cagliari-20260919",
     "match": "Udinese - Cagliari",
+    "home": "Udinese",
+    "away": "Cagliari",
     "date": "2026-09-19",
     "time": "15:00",
     "league": "Serie A",
@@ -40,7 +52,10 @@
     "stake_pct": 25
   },
   {
+    "id": "brighton-arsenal-20260919",
     "match": "Brighton - Arsenal",
+    "home": "Brighton",
+    "away": "Arsenal",
     "date": "2026-09-19",
     "time": "16:00",
     "league": "Premier League",
@@ -50,7 +65,10 @@
     "stake_pct": 20
   },
   {
+    "id": "everton-ipswich-20260919",
     "match": "Everton - Ipswich",
+    "home": "Everton",
+    "away": "Ipswich",
     "date": "2026-09-19",
     "time": "16:00",
     "league": "Premier League",
@@ -60,7 +78,10 @@
     "stake_pct": 25
   },
   {
+    "id": "newcastle-hull-20260919",
     "match": "Newcastle - Hull",
+    "home": "Newcastle",
+    "away": "Hull",
     "date": "2026-09-19",
     "time": "16:00",
     "league": "Premier League",
@@ -70,7 +91,10 @@
     "stake_pct": 20
   },
   {
+    "id": "athletic-alaves-20260919",
     "match": "Athletic - Alaves",
+    "home": "Athletic",
+    "away": "Alaves",
     "date": "2026-09-19",
     "time": "16:15",
     "league": "La Liga",
@@ -80,7 +104,10 @@
     "stake_pct": 25
   },
   {
+    "id": "paris-fc-strasbourg-20260919",
     "match": "Paris FC - Strasbourg",
+    "home": "Paris FC",
+    "away": "Strasbourg",
     "date": "2026-09-19",
     "time": "17:15",
     "league": "Ligue 1",
@@ -90,7 +117,10 @@
     "stake_pct": 20
   },
   {
+    "id": "roma-inter-20260919",
     "match": "Roma - Inter",
+    "home": "Roma",
+    "away": "Inter",
     "date": "2026-09-19",
     "time": "18:00",
     "league": "Serie A",
@@ -100,7 +130,10 @@
     "stake_pct": 30
   },
   {
+    "id": "celta-racing-20260919",
     "match": "Celta - Racing Santander",
+    "home": "Celta",
+    "away": "Racing Santander",
     "date": "2026-09-19",
     "time": "18:30",
     "league": "La Liga",
@@ -110,7 +143,10 @@
     "stake_pct": 20
   },
   {
+    "id": "nottingham-coventry-20260919",
     "match": "Nottingham Forest - Coventry",
+    "home": "Nottingham Forest",
+    "away": "Coventry",
     "date": "2026-09-19",
     "time": "18:30",
     "league": "Premier League",
@@ -120,7 +156,10 @@
     "stake_pct": 20
   },
   {
+    "id": "angers-troyes-20260919",
     "match": "Angers - Troyes",
+    "home": "Angers",
+    "away": "Troyes",
     "date": "2026-09-19",
     "time": "20:45",
     "league": "Ligue 1",
@@ -130,7 +169,10 @@
     "stake_pct": 25
   },
   {
+    "id": "le-mans-lorient-20260919",
     "match": "Le Mans - Lorient",
+    "home": "Le Mans",
+    "away": "Lorient",
     "date": "2026-09-19",
     "time": "20:45",
     "league": "Ligue 1",
@@ -140,7 +182,10 @@
     "stake_pct": 25
   },
   {
+    "id": "lyon-rennes-20260919",
     "match": "Lyon - Rennes",
+    "home": "Lyon",
+    "away": "Rennes",
     "date": "2026-09-19",
     "time": "20:45",
     "league": "Ligue 1",
@@ -150,7 +195,10 @@
     "stake_pct": 25
   },
   {
+    "id": "toulouse-le-havre-20260919",
     "match": "Toulouse - Le Havre",
+    "home": "Toulouse",
+    "away": "Le Havre",
     "date": "2026-09-19",
     "time": "20:45",
     "league": "Ligue 1",
@@ -160,7 +208,10 @@
     "stake_pct": 25
   },
   {
+    "id": "venezia-lazio-20260919",
     "match": "Venezia - Lazio",
+    "home": "Venezia",
+    "away": "Lazio",
     "date": "2026-09-19",
     "time": "20:45",
     "league": "Serie A",
@@ -170,7 +221,10 @@
     "stake_pct": 25
   },
   {
+    "id": "sevilla-barcelona-20260919",
     "match": "Sevilla - Barcelona",
+    "home": "Sevilla",
+    "away": "Barcelona",
     "date": "2026-09-19",
     "time": "21:00",
     "league": "La Liga",
